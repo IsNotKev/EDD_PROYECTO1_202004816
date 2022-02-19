@@ -14,13 +14,17 @@ public class Ventanilla {
     private int id;
     private Cliente cliente;
     private Pila imgs;
+    boolean recibe;
 
     public Ventanilla(int id) {
         this.id = id;
         this.cliente = null;
         this.imgs = new Pila();
     }
-       
+    
+    public int getID(){
+        return id;
+    }
     
     public Cliente getCliente() {
         return cliente;
@@ -38,6 +42,26 @@ public class Ventanilla {
         this.imgs = imgs;
     }
 
-      
+     public void recibirImg(){
+         if(cliente != null){
+             Imagen aux = (cliente.getImgs()).deletImg();
+             
+             if(aux != null){
+                 
+                 if(aux.isTipo()){
+                     System.out.println("Ventanilla " + id + " Recibio Una Imagen A Color");
+                 }else{
+                     System.out.println("Ventanilla " + id + " Recibio Una Imagen Blanco Y Negro");
+                 }                
+                 imgs.push(aux);
+             }else{       
+                 System.out.println("Cliente " + cliente.getId() +" salio de ventanilla " + id);
+                 EDDProyectoF1.espera.add(cliente);
+                 imgs.vaciarImgs();
+                 cliente = null;
+             }
+             
+         }
+     }
     
 }

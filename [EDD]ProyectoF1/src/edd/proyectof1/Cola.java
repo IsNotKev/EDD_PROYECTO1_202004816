@@ -36,14 +36,66 @@ public class Cola {
             }
     }
     
-    public void imprimir(){
-            String n = "";
-            Nodo aux = cabecera;
-            while(aux != null){
-                n += aux.info;
-                n += "-";
-                aux=aux.next;
+    public Cliente deletC(){
+        Cliente aux = null;
+        if(cabecera != null){
+            aux = (Cliente)cabecera.info;      
+            cabecera = cabecera.next;
+        }      
+        return aux;
+    }
+    
+    /*public Imagen deleteImg(){
+        Imagen aux = null;
+        if(cabecera != null){
+            aux = (Imagen)cabecera.info;      
+            cabecera = cabecera.next;
+        }      
+        return aux;
+    }*/
+    
+    public void imprimirC(){
+     
+        if(cabecera != null){
+            if(EDDProyectoF1.imprimir){
+                
+                EDDProyectoF1.espera.entregar((Imagen)cabecera.info);               
+                EDDProyectoF1.imprimir = false;
+                
+                cabecera = cabecera.next;
+                
+            }else{
+                EDDProyectoF1.imprimir = true;
             }
-            System.out.println(n);
+        }
+        
+    }
+    
+    public void imprimirBW(){        
+        if(cabecera != null){
+            EDDProyectoF1.espera.entregar((Imagen)cabecera.info);
+            cabecera = cabecera.next;
+        }
+    }
+    
+    public void imprimir(){
+        String n = "";
+        Nodo aux = cabecera;
+        while(aux != null){
+            n += aux.info;
+            n += "-";
+            aux=aux.next;
+        }
+        System.out.println(n);
+    }
+    
+    public void imprimirImpresoras(){
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            Imagen n = (Imagen)aux.info;
+            System.out.println("Imagen Con ID " + n.getId());
+            aux = aux.next;
+        }
     }
 }

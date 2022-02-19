@@ -13,18 +13,42 @@ public class Pila {
     private Nodo cabecera;
     
     public class Nodo{
-        public int info;
+        public Object info;
         public Nodo next = null;
         
-        public Nodo(int info){
+        public Nodo(Object info){
             this.info = info;
         }    
     }
     
-    public void push(int info){
+    public void push(Object info){
         Nodo nuevonodo = new Nodo(info);
         nuevonodo.next = cabecera;
         cabecera = nuevonodo;
+    }
+    
+    public Object pop(){
+        Object aux = cabecera.info;       
+        cabecera = cabecera.next;        
+        return aux;     
+    }
+    
+    public void vaciarImgs(){
+        Nodo aux = cabecera;
+        
+        while(aux!=null){
+            Imagen n = (Imagen)aux.info;
+            
+            if(n.isTipo()){
+                EDDProyectoF1.impresoraC.add(n);
+            }else{
+                EDDProyectoF1.impresoraBW.add(n);
+            }
+            
+            aux = aux.next;
+        }
+        
+        cabecera = null;
     }
     
     public void imprimir(){

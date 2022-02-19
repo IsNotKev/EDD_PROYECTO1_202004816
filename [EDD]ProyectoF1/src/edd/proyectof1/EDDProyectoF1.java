@@ -11,11 +11,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class EDDProyectoF1 {
+    
     // Estructuras Principales       
     public static Lista ventanillas = new Lista();
     public static Cola recepcion = new Cola();   
-    public static Cola impresoras = new Cola();
-    public static Lista espera = new Lista(); 
+    public static Cola impresoraC = new Cola();
+    public static Cola impresoraBW = new Cola();
+    public static ListaCircular espera = new ListaCircular(); 
+    public static Lista atendidos = new Lista();
+    
+    public static boolean imprimir = false;
     
     public static void main(String[] args) throws FileNotFoundException, IOException {     
         // Variables Auxiliares
@@ -44,62 +49,69 @@ public class EDDProyectoF1 {
             opcion = leer.nextLine();
             
             switch(opcion){
-                case "1":
-                    String opcion2 = "";
-                    while (!opcion2.equals("3")) {    
-                        
-                        System.out.println("\n------- PARAMETROS INICIALES -------");
-                        System.out.println("1. Carga Masiva de Clientes");
-                        System.out.println("2. Cantidad de Ventanillas");
-                        System.out.println("3. Regresar");
-                        System.out.println("------------------------------------");
-                        System.out.println("Elija Una Opción\n");
+                case "1":                    
+                    System.out.println("\n---- CARGA MASIVA DE CLIENTES ----");
+                    System.out.println("\nEscriba La Ruta Del Archivo JSON\n");
+                                
+                    String ruta = leer.nextLine();
+                                
+                    int no = leerArchivo(ruta);
+                                
+                    System.out.println("\n"+no + " Cliente(s) Agregado(s) A La Cola De Recepción. Presione Enter Para Continuar.");
+                    sTexto = br.readLine();
 
-                        opcion2 = leer.nextLine();   
-                        
-                        switch(opcion2){
-                            case "1":
-                                System.out.println("\n---- CARGA MASIVA DE CLIENTES ----");
-                                System.out.println("\nEscriba La Ruta Del Archivo JSON\n");
+                    System.out.println("\n---- CANTIDAD DE VENTANILLAS ----");
+                    System.out.println("\nEscriba La Cantidad De Ventanillas\n");
                                 
-                                String ruta = leer.nextLine();
+                    int cant = leer2.nextInt();
                                 
-                                int no = leerArchivo(ruta);
-                                
-                                System.out.println("\n"+no + " Cliente(s) Agregado(s) A La Cola De Recepción. Presione Enter Para Continuar.");
-                                sTexto = br.readLine();
-                                
-                                opcion2 = "3";
-                                break;
-                            case "2":
-                                System.out.println("\n---- CANTIDAD DE VENTANILLAS ----");
-                                System.out.println("\nEscriba La Cantidad De Ventanillas\n");
-                                
-                                int cant = leer2.nextInt();
-                                
-                                ventanillas.vaciar();
-                                for(int i = 0; i<=(cant-1) ; i++) {
-                                    Ventanilla n = new Ventanilla(i+1);
-                                    ventanillas.add(n);
-                                }
-                                
-                                opcion2 = "3";
-                                                               
-                                System.out.println("\n"+cant+" Ventanilla(s) Creada(s). Presione Enter Para Continuar.");
-                                sTexto = br.readLine();
-                                
-                                break;
-                            case "3":
-                                
-                                break;
-                            default:
-                                System.out.println("\nOpción Inválida. Elija Una Opción Correcta.");
-                                break;
-                        }
+                    ventanillas.vaciar();
+                    for(int i = 0; i<=(cant-1) ; i++) {
+                        Ventanilla n = new Ventanilla(i+1);
+                        ventanillas.add(n);
                     }
-                                                           
+                                                                                              
+                    System.out.println("\n"+cant+" Ventanilla(s) Creada(s). Presione Enter Para Continuar.");
+                    sTexto = br.readLine();                                                          
                     break;
                 case "2":
+                    
+                    System.out.println("--------------- EJECUCIÓN DE PASO ---------------");
+                    
+                    //Mandar Cliente A Lista Atendidos
+                    espera.atendidos();
+                    
+                    //Imprimir y Dar
+                    
+                    impresoraC.imprimirC();
+                    impresoraBW.imprimirBW();
+                    
+                    /*System.out.println("----------Impresora a color----------");
+                    impresoraC.imprimirImpresoras();
+                    System.out.println("----------Impresora a BW----------");
+                    impresoraBW.imprimirImpresoras();
+                    
+                    System.out.println("----------Lista de Espera-----------");
+                    espera.imprimir();*/
+                    
+                    //Pasar Cliente A Ventanilla
+                    int vVacia = ventanillas.estaVacia();                                      
+                    if(vVacia != 0){
+                        Cliente sCliente = recepcion.deletC();
+                        if(sCliente != null){
+                            ventanillas.asignarCliente(sCliente,vVacia);
+                        }
+                        //System.out.println("Ventanilla " + vVacia + " esta vacía");                       
+                    }else{
+                        //System.out.println("Todo Lleno");
+                    }
+                    
+                    //Dar imagen; Enviar Imagenes a Impresoras y Cliente a Lista de Espera
+                    ventanillas.darImg(vVacia);
+                   
+                    System.out.println("\nPresione Enter Para Continuar.");
+                    sTexto = br.readLine(); 
+                    
                     break;
                 case "3":
                     break;
@@ -175,17 +187,20 @@ public class EDDProyectoF1 {
                 
                 Lista imgs = new Lista();
                 
-                for (int i = 0; i<=imgc ; i++) {
+                for (int i = 0; i<=imgc-1 ; i++) {
                     Imagen nImagenC = new Imagen(id,true);
                     imgs.add(nImagenC);
                 }
                 
-                for(int i=0;i<=imgbw;i++){
+                for(int i=0;i<=imgbw-1;i++){
                     Imagen nImgBW = new Imagen(id, false);
                     imgs.add(nImgBW);
                 }
                 
-                Cliente nuevoCliente = new Cliente(name,id,imgs);
+                
+                int cant = (imgc+imgbw);
+                
+                Cliente nuevoCliente = new Cliente(name,id,imgs,cant);
                 recepcion.add(nuevoCliente);
                 
             } catch (Exception e) {

@@ -5,6 +5,9 @@
  */
 package edd.proyectof1;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author kevin
@@ -36,6 +39,57 @@ public class Lista {
             }
     }
     
+    public int estaVacia(){
+        
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            Ventanilla ver = (Ventanilla)aux.info;
+            if(ver.getCliente() == null ){
+                return ver.getID();
+            }
+            aux = aux.next;
+        }
+        
+        return 0;
+    }
+    
+    public void asignarCliente(Cliente nCliente, int id){
+        Nodo aux = cabecera;
+        nCliente.setVentanilla(id);
+        
+        while(aux != null){
+            Ventanilla ver = (Ventanilla)aux.info;
+            if(ver.getID() == id){
+                ver.setCliente(nCliente);
+                System.out.println("El Cliente " + nCliente.getId() + " INGRESA A VENTANILLA " + id);
+                break;
+            }
+            aux = aux.next;
+        }
+    }
+    
+    public void darImg(int excepcion){
+        Nodo aux = cabecera;
+        while(aux!=null){
+            Ventanilla ver = (Ventanilla)aux.info;
+            if(ver.getID() != excepcion){
+                if (ver.getCliente() != null) {
+                    ver.recibirImg();           
+                }
+            }
+            aux = aux.next;
+        }
+    }
+    
+    public Imagen deletImg(){
+        Imagen aux = null;
+        if(cabecera != null){
+            aux = (Imagen)cabecera.info;      
+            cabecera = cabecera.next;
+        }      
+        return aux;
+    }
     public void vaciar(){
         cabecera = null;
     }
@@ -50,4 +104,17 @@ public class Lista {
             }
             System.out.println(n);
     }
+    
+    public int tamano(){
+        int contador = 0;
+        
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            contador += 1;
+            aux = aux.next;
+        }           
+        return contador;
+    }
+    
 }
