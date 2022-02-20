@@ -8,8 +8,6 @@ package edd.proyectof1;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *
@@ -139,9 +137,7 @@ public class Lista {
         String nodos="";
         
         Nodo aux = cabecera;
-        
-        String auxiliar;
-        
+       
         if(title.equals("Ventanillas")){
                                   
             while(aux != null){
@@ -219,7 +215,13 @@ public class Lista {
     }
     
     public void graficar(Lista n , String title){
-       n.generarDot(title);
+        
+       if(title.equals("TopColor") || title.equals("TopBW")){
+           n.generarDotTop(title);
+       }else{
+           n.generarDot(title);
+       }
+       
         try {
            
            String dotPath = "C:\\Program Files\\Graphviz\\bin\\dot.exe";
@@ -295,6 +297,116 @@ public class Lista {
               
         Cliente n = a.buscar(id);        
         return n;
+    }
+    
+    public void topColor( Lista p){
+        
+        Lista top = new Lista();   
+        
+        for(int i = 0;i<5;i++){
+            Nodo aux = cabecera;
+            int id = 0;
+            int cant = 0;
+            while(aux != null){
+                Cliente n = (Cliente)aux.info;
+                
+                if(n.getC()>=cant && !(top.existe(n.getId()))){
+                    id = n.getId();
+                    cant = n.getC();
+                }   
+                aux = aux.next;
+            }
+            
+            if(p.buscar(id) != null){
+                top.add(p.buscar(id));
+            }           
+        }  
+        
+        top.graficar(top, "TopColor");
+    }  
+    
+    public void topBW( Lista p){
+        
+        Lista top = new Lista();   
+        
+        for(int i = 0;i<5;i++){
+            Nodo aux = cabecera;
+            int id = 0;
+            int cant = ((Cliente)aux.info).getBw();
+            while(aux != null){
+                Cliente n = (Cliente)aux.info;
+                
+                if(n.getBw()<=cant && !(top.existe(n.getId()))){
+                    id = n.getId();
+                    cant = n.getBw();
+                }   
+                aux = aux.next;
+            }
+            
+            if(p.buscar(id) != null){
+                top.add(p.buscar(id));
+            }           
+        }  
+        
+        top.graficar(top, "TopBW");
+    }
+    
+    public void generarDotTop(String title){
+        String resultado="digraph G{\nlabel=\""+title+"\";\nnode [shape=box];\nrankdir=TB;\n";        
+        String conexiones="";
+        String nodos="";
+        
+        Nodo aux = cabecera;
+        
+        int t = 0;
+        
+        while(aux!=null){
+            t += 1;
+            Cliente n = (Cliente)aux.info;
+            nodos += "N"+aux.hashCode()+"[label=\"TOP "+t+"\n\nCliente "+n.getId()+" \nIMG C: "+n.getC()+" \nIMG BN: "+n.getBw()+"\"];\n";
+            if(aux.next != null){
+                conexiones+="N"+aux.hashCode()+ " -> "+"N"+aux.next.hashCode()+";\n";
+            }
+            
+            aux = aux.next;
+        }
+        
+        resultado+= "//Agregando nodods\n";
+        resultado+=nodos+"\n";
+        resultado+= "//Agregando conexiones\n";
+        resultado+="{\n"+conexiones+"\n";
+        
+        resultado+="}\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+   
+    
+    public boolean existe(int id){
+        boolean existe = false;
+        
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            Cliente n = (Cliente)aux.info;
+            if(n.getId() == id){
+                existe = true;
+            }              
+            aux = aux.next;
+        }
+        
+        return existe;
     }
     
 }

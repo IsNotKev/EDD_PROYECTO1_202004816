@@ -140,8 +140,24 @@ public class EDDProyectoF1 {
                     
                     switch(opcion2){
                         case "1":
+                            
+                            System.out.println("\n--------------- TOP 5 MÁS IMAGENES A COLOR ---------------");
+                            
+                            atendidos.topColor(atendidos);
+                            
+                            System.out.println("\nTop Creado. Presione Enter Para Continuar.");
+                            sTexto = br.readLine();
+                            
                             break;
                         case "2":
+                            
+                            System.out.println("\n--------------- TOP 5 MENOS IMAGENES BLANCO Y NEGRO ---------------");
+                            
+                            atendidos.topBW(atendidos);
+                            
+                            System.out.println("\nTop Creado. Presione Enter Para Continuar.");
+                            sTexto = br.readLine();
+                            
                             break;
                         case "3":
                             
