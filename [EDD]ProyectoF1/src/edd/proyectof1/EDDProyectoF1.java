@@ -133,7 +133,7 @@ public class EDDProyectoF1 {
                     System.out.println("2. Top 5 de clientes con menor cantidad de imágenes en blanco y negro.");
                     System.out.println("3. Información del cliente que más pasos estuvo en el sistema.");
                     System.out.println("4. Datos de un cliente en específico");
-                    System.out.println("-------------------------------------------------------------------------");
+                    System.out.println("-----------------------------------------------------------------------");
                     System.out.println("Elija Una Opción\n");
                     
                     opcion2 = leer.nextLine();
@@ -144,16 +144,59 @@ public class EDDProyectoF1 {
                         case "2":
                             break;
                         case "3":
+                            
+                            System.out.println("\n------------- INFORMACION CLIENTE CON MÁS PASOS -------------\n");
+                            
+                            Cliente m = atendidos.masPasos(atendidos);
+                            
+                            if(m != null){
+                                System.out.println("\nCliente Encontrado:\n");
+                                System.out.println("- ID: " + m.getId());
+                                System.out.println("- Nombre : " + m.getNombre());
+                                System.out.println("- Imágenes A Color: " + m.getC());
+                                System.out.println("- Imágenes A Blanco Y Negro: " + m.getBw());
+                                System.out.println("- Pasos En El Sistema: " + m.pasos);
+                                
+                                System.out.println("\nPresione Enter Para Continuar.");
+                                sTexto = br.readLine();
+                            }else{
+                                System.out.println("\nLista Vacía. Presione Enter Para Continuar.");
+                                sTexto = br.readLine();
+                            }
+                            
+                            
                             break;
                         case "4":
+                            
+                            System.out.println("\n-------------- INFORMACION CLIENTE ESPECÍFICO --------------\n");
+                            System.out.println("Ingrese El ID Del Cliente Que Desea Información");
+                            
+                            int nID = Integer.parseInt(leer.nextLine());
+                            
+                            Cliente info = atendidos.buscar(nID);
+                            
+                            if(info != null){
+                                System.out.println("\nCliente Encontrado:\n");
+                                System.out.println("- ID: " + info.getId());
+                                System.out.println("- Nombre : " + info.getNombre());
+                                System.out.println("- Imágenes A Color: " + info.getC());
+                                System.out.println("- Imágenes A Blanco Y Negro: " + info.getBw());
+                                System.out.println("- Pasos En El Sistema: " + info.pasos);
+                                
+                                System.out.println("\nPresione Enter Para Continuar.");
+                                sTexto = br.readLine();
+                            }else{
+                                System.out.println("\nCliente No Encontrado. Presione Enter Para Continuar.");
+                                sTexto = br.readLine();
+                            }
+                            
                             break;
                         default:
+                            System.out.println("\nOpción Inválida.Presione Enter Para Continuar.");
+                            sTexto = br.readLine();
                             break;
                     }
-                    
-                    System.out.println("\nPresione Enter Para Continuar.");
-                    sTexto = br.readLine();
-                    
+                                        
                     break;
                 case "5":
                     

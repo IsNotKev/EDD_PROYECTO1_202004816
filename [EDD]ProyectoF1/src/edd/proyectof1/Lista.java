@@ -258,4 +258,43 @@ public class Lista {
             aux = aux.next;
         }
     }
+    
+    public Cliente buscar(int id){
+        Cliente n = null;
+        
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            Cliente auxiliar = (Cliente)aux.info;
+            
+            if(auxiliar.getId() == id){
+                n = auxiliar;
+            }
+            
+            aux = aux.next;
+        }
+        
+        return n;
+    }
+    
+    public Cliente masPasos(Lista a){
+        
+        Nodo aux = cabecera;
+        int id = 0;
+        int cant=0;
+        
+        while(aux != null){
+            Cliente auxiliar = (Cliente)aux.info;
+            if(auxiliar.pasos > cant){
+                id = auxiliar.getId();
+                cant = auxiliar.pasos;
+            }           
+            aux = aux.next;
+        }
+        
+              
+        Cliente n = a.buscar(id);        
+        return n;
+    }
+    
 }
