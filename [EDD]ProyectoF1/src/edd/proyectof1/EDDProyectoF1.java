@@ -30,6 +30,7 @@ public class EDDProyectoF1 {
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
         String opcion = "";
+        String opcion2 = "";
         
         // Presionar Enter Para Continuar
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -76,13 +77,13 @@ public class EDDProyectoF1 {
                     break;
                 case "2":
                     
-                    System.out.println("--------------- EJECUCIÓN DE PASO ---------------");
+                    System.out.println("--------------------- EJECUCIÓN DE PASO ---------------------");
                     
                     //Mandar Cliente A Lista Atendidos
                     espera.atendidos();
+                    atendidos.eliminarEspera();
                     
-                    //Imprimir y Dar
-                    
+                    //Imprimir y Dar                   
                     impresoraC.imprimirC();
                     impresoraBW.imprimirBW();
                     
@@ -108,14 +109,51 @@ public class EDDProyectoF1 {
                     
                     //Dar imagen; Enviar Imagenes a Impresoras y Cliente a Lista de Espera
                     ventanillas.darImg(vVacia);
+                    
+                    sumarPaso();
                    
                     System.out.println("\nPresione Enter Para Continuar.");
                     sTexto = br.readLine(); 
                     
                     break;
                 case "3":
+                    
+                    System.out.println("\n---------- ESTADO EN MEMORIA DE LAS ESTRUCTURAS ----------");
+                    
+                    graficarEstructuras();
+                    
+                    System.out.println("\nPresione Enter Para Continuar.");
+                    sTexto = br.readLine(); 
+                    
                     break;
                 case "4":
+                    
+                    System.out.println("\n------------------------------- REPORTES ------------------------------");
+                    System.out.println("1. Top 5 de clientes con mayor cantidad de imágenes a color.");
+                    System.out.println("2. Top 5 de clientes con menor cantidad de imágenes en blanco y negro.");
+                    System.out.println("3. Información del cliente que más pasos estuvo en el sistema.");
+                    System.out.println("4. Datos de un cliente en específico");
+                    System.out.println("-------------------------------------------------------------------------");
+                    System.out.println("Elija Una Opción\n");
+                    
+                    opcion2 = leer.nextLine();
+                    
+                    switch(opcion2){
+                        case "1":
+                            break;
+                        case "2":
+                            break;
+                        case "3":
+                            break;
+                        case "4":
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    System.out.println("\nPresione Enter Para Continuar.");
+                    sTexto = br.readLine();
+                    
                     break;
                 case "5":
                     
@@ -200,7 +238,7 @@ public class EDDProyectoF1 {
                 
                 int cant = (imgc+imgbw);
                 
-                Cliente nuevoCliente = new Cliente(name,id,imgs,cant);
+                Cliente nuevoCliente = new Cliente(name,id,imgs,cant,imgc,imgbw);
                 recepcion.add(nuevoCliente);
                 
             } catch (Exception e) {
@@ -208,6 +246,23 @@ public class EDDProyectoF1 {
             }
         }
         return cont-1;
+    }
+    
+    public static void graficarEstructuras(){
+        
+        recepcion.graficar(recepcion,"Cola Recepción");
+        ventanillas.graficar(ventanillas,"Ventanillas");
+        espera.graficarEspera();
+        impresoraBW.graficar(impresoraBW,"Impresora BW");
+        impresoraC.graficar(impresoraC,"Impresora C");
+        atendidos.graficar(atendidos,"Clientes Atendidos");
+        
+    }
+    
+    public static void sumarPaso(){
+        recepcion.sumarPaso();
+        ventanillas.sumarPaso();
+        espera.sumarPaso();
     }
     
 }

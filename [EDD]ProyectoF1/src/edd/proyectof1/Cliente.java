@@ -16,15 +16,29 @@ public class Cliente {
     private Lista imgs;
     private int ventanilla;
     private int cant;
+    private int bw;
+    private int c;
+    int pasos;
 
-    public Cliente(String nombre, int id, Lista imgs, int cant) {
+    public Cliente(String nombre, int id, Lista imgs, int cant, int c, int bw) {
         this.nombre = nombre;
         this.id = id;
         this.imgs = imgs;
         this.ventanilla = 0;
         this.cant = cant;
+        this.pasos = 0;
+        this.bw = bw;
+        this.c = c;
     }
 
+    public int getBw() {
+        return bw;
+    }
+
+    public int getC() {
+        return c;
+    }
+    
     public int getCant() {
         return cant;
     }

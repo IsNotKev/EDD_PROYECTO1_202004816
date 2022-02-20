@@ -45,6 +45,44 @@ public class ListaCircular {
         }
     }
     
+    public void delete(int id){
+        Nodo aux = inicio;
+        
+        if(aux!=null){
+            if(aux.next == inicio){
+                Cliente n = (Cliente)aux.info;            
+                if(n.getId() == id){
+                    inicio = null;
+                }
+            }else{
+                Cliente n = (Cliente)aux.info;            
+                if(n.getId() == id){
+                    Nodo aux2 = aux.next;
+                    Nodo aux3 = aux.anterior;
+                    
+                    inicio = aux2;
+                    aux2.anterior = aux3;
+                    aux3.next = inicio;
+                    
+                }else{
+                    aux = aux.next;
+                    while(aux != inicio){
+                        Cliente n1 = (Cliente)aux.info;
+                        if(n1.getId() == id){
+                           Nodo aux2 = aux.next;
+                           Nodo aux3 = aux.anterior;
+                           
+                           aux3.next = aux2;
+                           aux2.anterior = aux3;
+                           break;
+                        }                        
+                        aux = aux.next;
+                    }
+                }
+            }                        
+        }
+    }
+    
     public void entregar(Imagen img){
         Nodo aux = inicio;
         
@@ -115,23 +153,54 @@ public class ListaCircular {
         if(aux != null){
             if(aux.next == inicio){
                 Cliente n = (Cliente)aux.info;
-                if(n.getCant() == n.getImgs().tamano()){
+                if(n.getCant() == n.getImgs().tamano()){                    
+                    System.out.println("Cliente " + n.getId() + " Atendido Con " + n.pasos + " Pasos.");
                     EDDProyectoF1.atendidos.add(n);
-                    inicio = null;
                 }
             }else{
                 Cliente n = (Cliente)aux.info;
                 if(n.getCant() == n.getImgs().tamano()){
-                    EDDProyectoF1.atendidos.add(n);
-                    Nodo aux1 = aux.anterior;
-                    Nodo aux2 = aux.next;
-                    
-                    inicio = aux2;
-                    inicio.anterior = aux1;
-                    aux1.next = inicio;                    
-                }
-                aux = aux.next;
+                    System.out.println("Cliente " + n.getId() + " Atendido Con " + n.pasos + " Pasos.");
+                    EDDProyectoF1.atendidos.add(n); 
+                }else{
+                    aux = aux.next;               
+                    while(aux != inicio){
+                        Cliente n1 = (Cliente)aux.info;
+                        if(n1.getCant() == n1.getImgs().tamano()){
+                            EDDProyectoF1.atendidos.add(n);   
+                            System.out.println("Cliente " + n1.getId() + " Atendido Con " + n1.pasos + " Pasos.");
+                        }
+                        aux = aux.next;
+                    } 
+                }                           
             }
         }       
+    }
+    
+    public void graficarEspera(){
+    
+    
+    }
+    
+    public void sumarPaso(){
+        Nodo aux = inicio;
+        
+        if(aux != null){
+            if(aux.next == inicio){
+                Cliente n = (Cliente)aux.info;
+                n.pasos += 1;
+            }else{
+                Cliente n1 = (Cliente)aux.info;
+                n1.pasos += 1;
+                aux = aux.next;
+                while(aux != inicio){
+                    Cliente n = (Cliente)aux.info;
+                    n.pasos += 1;
+                    aux = aux.next;
+                }
+            }
+        }
+        
+        
     }
 }

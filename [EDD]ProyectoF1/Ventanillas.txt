@@ -1,0 +1,38 @@
+digraph G{
+label="Ventanillas";
+node [shape=box];
+rankdir=LR;
+//Agregando nodods
+N2046562095[label="Cliente 8 
+IMG C: 3 
+IMG BN: 2"];
+N1342443276[label="VENTANILLA 1"];
+N769287236[label="IMAGEN C"];
+N1587487668[label="IMAGEN C"];
+N932172204[label="Cliente 9 
+IMG C: 1 
+IMG BN: 1"];
+N1199823423[label="VENTANILLA 2"];
+N1848402763[label="Cliente 7 
+IMG C: 3 
+IMG BN: 4"];
+N1225358173[label="VENTANILLA 3"];
+N933699219[label="IMAGEN C"];
+N2121055098[label="IMAGEN C"];
+N2084435065[label="IMAGEN C"];
+
+//Agregando conexiones
+{
+N2046562095 -> N1342443276;
+N1342443276 -> N769287236[arrowhead=none];
+N769287236 -> N1587487668[arrowhead=none];
+N1342443276 -> N1199823423;
+N932172204 -> N1199823423;
+N1199823423 -> N1225358173;
+N1848402763 -> N1225358173;
+N1225358173 -> N933699219[arrowhead=none];
+N933699219 -> N2121055098[arrowhead=none];
+N2121055098 -> N2084435065[arrowhead=none];
+
+}
+}

@@ -10,7 +10,7 @@ package edd.proyectof1;
  * @author kevin
  */
 public class Pila {
-    private Nodo cabecera;
+    Nodo cabecera;
     
     public class Nodo{
         public Object info;

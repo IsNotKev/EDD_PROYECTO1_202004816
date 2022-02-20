@@ -1,0 +1,18 @@
+digraph G{
+label="Clientes Atendidos";
+node [shape=box];
+rankdir=LR;
+//Agregando nodods
+N1128032093[label="Cliente 1 
+IMG C: 3 
+IMG BN: 2"];
+N1066516207[label="Cliente 3 
+IMG C: 0 
+IMG BN: 3"];
+
+//Agregando conexiones
+{
+N1128032093 -> N1066516207;
+
+}
+}

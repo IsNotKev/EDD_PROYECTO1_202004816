@@ -1,0 +1,18 @@
+digraph G{
+label="Impresora C";
+node [shape=box];
+//Agregando nodods
+N1[label="IMPRESORA 
+COLOR"];
+N1637070917[label="IMG C"];
+N780237624[label="IMG C"];
+N205797316[label="IMG C"];
+
+//Agregando conexiones
+{rank= same;
+N1 -> N1637070917[arrowhead=none];
+N1637070917 -> N780237624[arrowhead=none];
+N780237624 -> N205797316[arrowhead=none];
+
+}
+}
