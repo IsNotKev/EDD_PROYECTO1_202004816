@@ -16,7 +16,7 @@ import java.util.Set;
  * @author kevin
  */
 public class Lista {
-    private Nodo cabecera;
+    Nodo cabecera;
     
     public class Nodo{        
         Object info;

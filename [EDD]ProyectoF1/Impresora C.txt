@@ -4,15 +4,19 @@ node [shape=box];
 //Agregando nodods
 N1[label="IMPRESORA 
 COLOR"];
-N1637070917[label="IMG C"];
-N780237624[label="IMG C"];
-N205797316[label="IMG C"];
+N1368884364[label="IMG C"];
+N401625763[label="IMG C"];
+N596512129[label="IMG C"];
+N648129364[label="IMG C"];
+N661672156[label="IMG C"];
 
 //Agregando conexiones
 {rank= same;
-N1 -> N1637070917[arrowhead=none];
-N1637070917 -> N780237624[arrowhead=none];
-N780237624 -> N205797316[arrowhead=none];
+N1 -> N1368884364[arrowhead=none];
+N1368884364 -> N401625763[arrowhead=none];
+N401625763 -> N596512129[arrowhead=none];
+N596512129 -> N648129364[arrowhead=none];
+N648129364 -> N661672156[arrowhead=none];
 
 }
 }

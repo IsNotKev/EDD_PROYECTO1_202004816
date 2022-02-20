@@ -1,0 +1,40 @@
+digraph G{
+label="Lista Clientes En Espera";
+node [shape=box];
+rankdir=LR;
+//Agregando nodods
+N205797316[label="Cliente 2 
+IMG C: 1 
+IMG BN: 4"];
+N728890494[label="IMAGEN BN"];
+N1147985808[label="IMAGEN BN"];
+N1128032093[label="Cliente 4 
+IMG C: 1 
+IMG BN: 3"];
+N777874839[label="Cliente 6 
+IMG C: 1 
+IMG BN: 0"];
+N1494279232[label="Cliente 5 
+IMG C: 1 
+IMG BN: 4"];
+N2040495657[label="Cliente 9 
+IMG C: 1 
+IMG BN: 1"];
+
+//Agregando conexiones
+{
+N205797316 -> N1128032093;
+N1128032093 -> N205797316;
+N205797316 -> N728890494[arrowhead=none];
+N728890494 -> N1147985808;
+N1128032093 -> N777874839;
+N777874839 -> N1128032093;
+N777874839 -> N1494279232;
+N1494279232 -> N777874839;
+N1494279232 -> N2040495657;
+N2040495657 -> N1494279232;
+N2040495657 -> N205797316;
+N205797316 -> N2040495657;
+
+}
+}

@@ -252,7 +252,7 @@ public class EDDProyectoF1 {
         
         recepcion.graficar(recepcion,"Cola Recepción");
         ventanillas.graficar(ventanillas,"Ventanillas");
-        espera.graficarEspera();
+        espera.graficar(espera,"Lista Clientes En Espera");
         impresoraBW.graficar(impresoraBW,"Impresora BW");
         impresoraC.graficar(impresoraC,"Impresora C");
         atendidos.graficar(atendidos,"Clientes Atendidos");

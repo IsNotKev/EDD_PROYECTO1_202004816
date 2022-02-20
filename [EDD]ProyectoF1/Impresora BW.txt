@@ -4,23 +4,29 @@ node [shape=box];
 //Agregando nodods
 N1[label="IMPRESORA 
 B Y N"];
-N1896277646[label="IMG BN"];
-N2128227771[label="IMG BN"];
-N1702297201[label="IMG BN"];
-N1996181658[label="IMG BN"];
-N806353501[label="IMG BN"];
-N521645586[label="IMG BN"];
-N1296064247[label="IMG BN"];
+N1560911714[label="IMG BN"];
+N939047783[label="IMG BN"];
+N1237514926[label="IMG BN"];
+N548246552[label="IMG BN"];
+N835648992[label="IMG BN"];
+N1650967483[label="IMG BN"];
+N87285178[label="IMG BN"];
+N610998173[label="IMG BN"];
+N2047329716[label="IMG BN"];
+N1267032364[label="IMG BN"];
 
 //Agregando conexiones
 {rank= same;
-N1 -> N1896277646[arrowhead=none];
-N1896277646 -> N2128227771[arrowhead=none];
-N2128227771 -> N1702297201[arrowhead=none];
-N1702297201 -> N1996181658[arrowhead=none];
-N1996181658 -> N806353501[arrowhead=none];
-N806353501 -> N521645586[arrowhead=none];
-N521645586 -> N1296064247[arrowhead=none];
+N1 -> N1560911714[arrowhead=none];
+N1560911714 -> N939047783[arrowhead=none];
+N939047783 -> N1237514926[arrowhead=none];
+N1237514926 -> N548246552[arrowhead=none];
+N548246552 -> N835648992[arrowhead=none];
+N835648992 -> N1650967483[arrowhead=none];
+N1650967483 -> N87285178[arrowhead=none];
+N87285178 -> N610998173[arrowhead=none];
+N610998173 -> N2047329716[arrowhead=none];
+N2047329716 -> N1267032364[arrowhead=none];
 
 }
 }
