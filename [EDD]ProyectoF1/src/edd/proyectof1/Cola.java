@@ -211,4 +211,16 @@ public class Cola {
             aux = aux.next;
         }
     }
+    
+    public int tamano(){
+        int contador = 0;
+        
+        Nodo aux = cabecera;
+        
+        while(aux != null){
+            contador += 1;
+            aux = aux.next;
+        }           
+        return contador;
+    }
 }

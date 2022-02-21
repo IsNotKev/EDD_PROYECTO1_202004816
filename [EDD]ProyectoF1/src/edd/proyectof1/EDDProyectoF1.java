@@ -20,11 +20,18 @@ public class EDDProyectoF1 {
     public static ListaCircular espera = new ListaCircular(); 
     public static Lista atendidos = new Lista();
     
+    //Auxiliar ImpC
     public static boolean imprimir = false;
     
+    //Nombres Y Apellidos
+    public static Lista nombres = new Lista();
+    public static Lista apellidos = new Lista();
+    public static int id;
+    
     public static void main(String[] args) throws FileNotFoundException, IOException {     
-        // Variables Auxiliares
-        
+             
+        generarNombres();
+       
         
         // Lector de opciones
         Scanner leer = new Scanner(System.in);
@@ -61,6 +68,8 @@ public class EDDProyectoF1 {
                     System.out.println("\n"+no + " Cliente(s) Agregado(s) A La Cola De Recepción. Presione Enter Para Continuar.");
                     sTexto = br.readLine();
 
+                    id = recepcion.tamano();
+                    
                     System.out.println("\n---- CANTIDAD DE VENTANILLAS ----");
                     System.out.println("\nEscriba La Cantidad De Ventanillas\n");
                                 
@@ -111,6 +120,8 @@ public class EDDProyectoF1 {
                     ventanillas.darImg(vVacia);
                     
                     sumarPaso();
+                    
+                    generarCliente();
                    
                     System.out.println("\nPresione Enter Para Continuar.");
                     sTexto = br.readLine(); 
@@ -122,7 +133,7 @@ public class EDDProyectoF1 {
                     
                     graficarEstructuras();
                     
-                    System.out.println("\nPresione Enter Para Continuar.");
+                    System.out.println("\nEstructuras Graficadas. Presione Enter Para Continuar.");
                     sTexto = br.readLine(); 
                     
                     break;
@@ -166,7 +177,7 @@ public class EDDProyectoF1 {
                             Cliente m = atendidos.masPasos(atendidos);
                             
                             if(m != null){
-                                System.out.println("\nCliente Encontrado:\n");
+                                System.out.println("Cliente Encontrado:\n");
                                 System.out.println("- ID: " + m.getId());
                                 System.out.println("- Nombre : " + m.getNombre());
                                 System.out.println("- Imágenes A Color: " + m.getC());
@@ -305,6 +316,66 @@ public class EDDProyectoF1 {
             }
         }
         return cont-1;
+    }
+    
+    public static void generarNombres(){
+        nombres.add("Kevin");
+        nombres.add("Mario");
+        nombres.add("Cristian");
+        nombres.add("Paola");
+        nombres.add("Chloe");
+        nombres.add("Alexandra");
+        nombres.add("Tony");
+        nombres.add("Peter");
+        nombres.add("Scarlett");
+        nombres.add("Bruce");
+        
+        apellidos.add("Martinez");
+        apellidos.add("Moran");
+        apellidos.add("Pereira");
+        apellidos.add("Lemus");
+        apellidos.add("Wayne");
+        apellidos.add("Banner");
+        apellidos.add("Parker");
+        apellidos.add("Moretz");
+        apellidos.add("Evans");
+        apellidos.add("Rodriguez");
+      
+    }
+    
+    public static void generarCliente(){
+        
+        int cs = (int) (Math.random()*(4-0)) + 0;
+        
+        for(int g = 0;g<cs;g++){
+        
+            //NOMBRES Y ID
+            String nombre = nombres.aleatorio();
+            String apellido = apellidos.aleatorio();
+            String name = nombre + " " + apellido;
+            id += 1;
+
+            //IMGS
+            int imgbw = (int) (Math.random()*(4-0)) + 0;
+            int imgc = (int) (Math.random()*(4-0)) + 0;
+            int cant = imgbw+imgc;
+
+            Lista imgs = new Lista();
+
+            for (int i = 0; i<=imgc-1 ; i++) {
+                Imagen nImagenC = new Imagen(id,true);
+                imgs.add(nImagenC);
+            }
+
+            for(int i=0;i<=imgbw-1;i++){
+                Imagen nImgBW = new Imagen(id, false);
+                imgs.add(nImgBW);
+            }
+
+            Cliente nuevoCliente = new Cliente(name,id,imgs,cant,imgc,imgbw);
+            recepcion.add(nuevoCliente);
+        }
+        
     }
     
     public static void graficarEstructuras(){

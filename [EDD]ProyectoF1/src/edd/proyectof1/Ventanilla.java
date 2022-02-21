@@ -49,13 +49,13 @@ public class Ventanilla {
              if(aux != null){
                  
                  if(aux.isTipo()){
-                     System.out.println("Ventanilla " + id + " Recibio Una Imagen A Color");
+                     System.out.println("Ventanilla " + id + " Recibió Una Imagen A Color");
                  }else{
-                     System.out.println("Ventanilla " + id + " Recibio Una Imagen Blanco Y Negro");
+                     System.out.println("Ventanilla " + id + " Recibió Una Imagen Blanco Y Negro");
                  }                
                  imgs.push(aux);
              }else{       
-                 System.out.println("Cliente " + cliente.getId() +" salio de ventanilla " + id);
+                 System.out.println("Cliente " + cliente.getId() +" salió de ventanilla " + id);
                  EDDProyectoF1.espera.add(cliente);
                  imgs.vaciarImgs();
                  cliente = null;

@@ -409,4 +409,22 @@ public class Lista {
         return existe;
     }
     
+    public String aleatorio(){
+    
+        Nodo aux = cabecera;
+        int x = (int) (Math.random()*(10-0)) + 0;
+        int cont = 0;
+        
+        while(aux != null){
+            
+            if(x==cont){
+                return (String)aux.info;
+            }           
+            aux = aux.next;           
+            cont +=1;
+        }   
+        
+        return "";
+    }
+    
 }
