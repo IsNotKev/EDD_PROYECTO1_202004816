@@ -224,7 +224,7 @@ public class Admin extends javax.swing.JFrame {
         for (JsonElement obj : gsonArr) {
             // Object of array
             JsonObject gsonObj = obj.getAsJsonObject();
-            String dpi = gsonObj.get("dpi").getAsString();
+            int dpi = gsonObj.get("dpi").getAsInt();
             String nombre = gsonObj.get("nombre_cliente").getAsString();
             String contra = gsonObj.get("password").getAsString();
             

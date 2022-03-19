@@ -12,24 +12,33 @@ import Estructuras.*;
  * @author kevin
  */
 public class Cliente {
-    String dpi;
+    
+    //Datos Del Cliente
+    int dpi;
     String nombre;
     String contra;
-    ABB capas;
+    
+    // Estructuras 
     Lista albumes;
-
-    public Cliente(String dpi, String nombre, String contra) {
+    ABB capas;
+    AVL imgs;
+    
+    public Cliente(int dpi, String nombre, String contra) {
+        
         this.dpi = dpi;
         this.nombre = nombre;
         this.contra = contra;
         
+        albumes = new Lista();
+        capas = new ABB();
+        imgs = new AVL();
     }   
     
-    public String getDpi() {
+    public int getDpi() {
         return dpi;
     }
 
-    public void setDpi(String dpi) {
+    public void setDpi(int dpi) {
         this.dpi = dpi;
     }
 
@@ -70,6 +79,10 @@ public class Cliente {
         System.out.println("Nombre: " + nombre);
         System.out.println("DPI: " + dpi);
         System.out.println("Contraseña: " + contra);
+    }
+    
+    public void agregarCapa(Capa capa){
+        capas.agregar(capa);
     }
     
 }

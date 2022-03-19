@@ -5,18 +5,26 @@
  */
 package edd.proyectof2;
 
+import Estructuras.*;
+import Objetos.*;
+
 /**
  *
  * @author kevin
  */
+
 public class EDDProyectoF2 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static ArbolB clientes = new ArbolB();
+    public static Cliente clientePrueba = new Cliente(252525252,"Kevin","123");
+    
     public static void main(String[] args) {
-        Login log = new Login();
-        log.setVisible(true);
+        /*Login log = new Login();
+        log.setVisible(true);*/
+        
+        Usuario u = new Usuario();
+        u.setVisible(true);
+        
     }
     
 }

@@ -5,6 +5,14 @@
  */
 package edd.proyectof2;
 
+import Estructuras.Matriz;
+import Objetos.Capa;
+import Objetos.Cliente;
+import com.google.gson.*;
+import java.io.*;
+import java.util.Scanner;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author kevin
@@ -29,6 +37,9 @@ public class Usuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -45,21 +56,65 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 51, 51));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Carga Masiva De Capas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(0, 51, 51));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Carga Masiva De Imágenes");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(0, 51, 51));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Carga Masiva De Álbumes");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(514, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(81, 81, 81)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,6 +137,21 @@ public class Usuario extends javax.swing.JFrame {
         log.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String archivoCapas = leer();
+        generarCapas(archivoCapas);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String archivoImg = leer();
+        generarImgs(archivoImg);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String archivoAlbum = leer();
+        generarAlbumes(archivoAlbum);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,8 +188,127 @@ public class Usuario extends javax.swing.JFrame {
         });
     }
 
+    public static void generarAlbumes(String text){
+        JsonParser parser = new JsonParser();
+        // Obtain Array
+        JsonArray gsonArr = parser.parse(text).getAsJsonArray();
+        // for each element of array
+        for (JsonElement obj : gsonArr) {
+            // Object of array
+            JsonObject gsonObj = obj.getAsJsonObject();
+            String nombre = gsonObj.get("nombre_album").getAsString();
+            
+            
+            //System.out.println("-------------------------- "+nombre+" --------------------");
+            
+            JsonArray imgs = gsonObj.get("imgs").getAsJsonArray();
+            for(JsonElement pix: imgs){
+                int c = pix.getAsInt();
+                //System.out.println("-> " + c);
+            }
+            
+        }
+    }
+    
+    public static void generarImgs(String text){
+        JsonParser parser = new JsonParser();
+        // Obtain Array
+        JsonArray gsonArr = parser.parse(text).getAsJsonArray();
+        // for each element of array
+        for (JsonElement obj : gsonArr) {
+            // Object of array
+            JsonObject gsonObj = obj.getAsJsonObject();
+            int id = gsonObj.get("id").getAsInt();
+            
+            
+            //System.out.println("-------------------------- "+id+" --------------------");
+            
+            JsonArray capas = gsonObj.get("capas").getAsJsonArray();
+            for(JsonElement pix: capas){
+                int c = pix.getAsInt();
+                //System.out.println("-> " + c);
+            }
+            
+        }
+    }
+    
+    public static void generarCapas(String text){
+        JsonParser parser = new JsonParser();
+
+        // Obtain Array
+        JsonArray gsonArr = parser.parse(text).getAsJsonArray();
+        // for each element of array
+        for (JsonElement obj : gsonArr) {
+            // Object of array
+            JsonObject gsonObj = obj.getAsJsonObject();
+            int id = gsonObj.get("id_capa").getAsInt();
+            JsonArray pixeles = gsonObj.get("pixeles").getAsJsonArray();
+            
+            //System.out.println("-------------------------- "+id+" --------------------");
+            
+            Matriz miMatriz = new Matriz();
+            
+            for(JsonElement pix: pixeles){
+                JsonObject ps = pix.getAsJsonObject();
+                int y  = ps.get("fila").getAsInt();
+                int x  = ps.get("columna").getAsInt();
+                String color = ps.get("color").getAsString();
+                //System.out.println("Ho");
+                miMatriz.insertar(color, x, y);
+            }
+            
+            Capa nuevaCapa = new Capa(id,miMatriz);           
+            EDDProyectoF2.clientePrueba.agregarCapa(nuevaCapa);
+            
+            /*System.out.println("-------------------"+id+"-----------------");
+            miMatriz.imprimir_horizontal();*/
+            
+        }
+        
+        System.out.println("Capas creadas :v ");
+        
+    }
+    
+    public static String leer(){
+        int c = 0;
+        Scanner entrada = null;
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(fileChooser);
+        String t = "";
+        try {
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();                                        
+            File f = new File(ruta);
+            entrada = new Scanner(f);
+            while (entrada.hasNext()) {
+                if(c==0){
+                    t += entrada.nextLine();
+                }else{
+                    t += "\n" + entrada.nextLine();
+                }
+                c += 1;
+            }
+            
+            //System.out.println(t);
+            return t;
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (NullPointerException e) {
+            System.out.println("No se ha seleccionado ningún fichero");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (entrada != null) {
+                entrada.close();
+            }
+        }
+        return "";
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

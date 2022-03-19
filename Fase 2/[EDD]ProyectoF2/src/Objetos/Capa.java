@@ -5,19 +5,19 @@
  */
 package Objetos;
 
-import Estructuras.ABB;
+import Estructuras.Matriz;
 
 /**
  *
  * @author kevin
  */
-public class Imagen {
+public class Capa {
     int id;
-    ABB capas;
+    Matriz pixeles;
 
-    public Imagen(int id, ABB capas) {
+    public Capa(int id, Matriz pixeles) {
         this.id = id;
-        this.capas = capas;
+        this.pixeles = pixeles;
     }
 
     public int getId() {
@@ -28,13 +28,12 @@ public class Imagen {
         this.id = id;
     }
 
-    public ABB getCapas() {
-        return capas;
+    public Matriz getPixeles() {
+        return pixeles;
     }
 
-    public void setCapas(ABB capas) {
-        this.capas = capas;
-    }
-    
+    public void setPixeles(Matriz pixeles) {
+        this.pixeles = pixeles;
+    }       
     
 }

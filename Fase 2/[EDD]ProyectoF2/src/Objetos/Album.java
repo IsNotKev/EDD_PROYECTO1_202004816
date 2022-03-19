@@ -5,19 +5,19 @@
  */
 package Objetos;
 
-import Estructuras.ABB;
+import Estructuras.Lista;
 
 /**
  *
  * @author kevin
  */
-public class Imagen {
+public class Album {
     int id;
-    ABB capas;
+    Lista imgs;
 
-    public Imagen(int id, ABB capas) {
+    public Album(int id, Lista imgs) {
         this.id = id;
-        this.capas = capas;
+        this.imgs = imgs;
     }
 
     public int getId() {
@@ -28,12 +28,12 @@ public class Imagen {
         this.id = id;
     }
 
-    public ABB getCapas() {
-        return capas;
+    public Lista getImgs() {
+        return imgs;
     }
 
-    public void setCapas(ABB capas) {
-        this.capas = capas;
+    public void setImgs(Lista imgs) {
+        this.imgs = imgs;
     }
     
     

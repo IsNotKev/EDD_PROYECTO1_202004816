@@ -10,5 +10,30 @@ package Estructuras;
  * @author kevin
  */
 public class Lista {
+    Nodo cabecera;
+    
+    public class Nodo{        
+        Object info;
+        Nodo next;
+
+        public Nodo(Object info) {
+            this.info = info;
+            this.next = null;
+        }       
+    }
+    
+    public void add(Object info){
+            Nodo nodonuevo = new Nodo(info);
+            if(cabecera == null){
+                cabecera = nodonuevo;
+            }
+            else{
+                Nodo aux = cabecera;
+                while(aux.next != null){
+                    aux=aux.next;
+                }
+                aux.next = nodonuevo;
+            }
+    }
     
 }
