@@ -260,9 +260,11 @@ public class Usuario extends javax.swing.JFrame {
             Capa nuevaCapa = new Capa(id,miMatriz);           
             EDDProyectoF2.clientePrueba.agregarCapa(nuevaCapa);
             
-            /*System.out.println("-------------------"+id+"-----------------");
-            miMatriz.imprimir_horizontal();*/
+            System.out.println("-------------------"+id+"-----------------");
+            miMatriz.imprimir_horizontal();
             
+            miMatriz.graficarMatriz("capa"+id);
+            EDDProyectoF2.graficarDot("capa"+id);
         }
         
         System.out.println("Capas creadas :v ");

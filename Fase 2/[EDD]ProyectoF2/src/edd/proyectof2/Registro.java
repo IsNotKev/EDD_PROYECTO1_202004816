@@ -5,6 +5,9 @@
  */
 package edd.proyectof2;
 
+import Objetos.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kevin
@@ -223,7 +226,29 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        if(jTextField1.getText().equals("") || jTextField2.getText().equals("") || jPasswordField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Ingrese todos los datos.","Error",JOptionPane.ERROR_MESSAGE);
+        }else{
+            try {
+                int dpi = Integer.parseInt(jTextField1.getText());
+                String nombre = jTextField2.getText();
+                String contra = jPasswordField1.getText();
+                //System.out.println(dpi+nombre+contra);
+                Cliente nuevoCliente = new Cliente(dpi,nombre,contra);
+                
+                JOptionPane.showMessageDialog(null,"Usuario creado exitosamente.","Usuario",JOptionPane.INFORMATION_MESSAGE);
+                Login log = new Login();
+                log.setVisible(true);
+
+                dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"Ingrese datos correctos","Error",JOptionPane.ERROR_MESSAGE);
+            }                              
+        }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

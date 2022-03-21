@@ -5,6 +5,10 @@
  */
 package Estructuras;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 /**
  *
  * @author kevin
@@ -99,7 +103,16 @@ public class Matriz {
             Nodo temp = raiz;
             while(temp != null){
                 System.out.println("Cabecera: " + temp.info);
+                temp = temp.next;
             }
+        }
+        
+        public int max(){
+            Nodo temp = raiz;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            return (int)temp.info;
         }
     }
     
@@ -295,4 +308,124 @@ public class Matriz {
             cabecera = cabecera.next;
         }
     }    
+    
+    public String buscarColor(int x, int y){
+        Nodo cabecera = horizontal.raiz;
+        while(cabecera != null){
+            Nodo aux = cabecera.abajo;
+            while(aux != null){
+                if(aux.x == x && aux.y == y){
+                    return (String)aux.info;
+                }
+                //System.out.println(aux.info + ", x=" + aux.x + ", y = " +aux.y);
+                aux = aux.abajo;
+            }
+            cabecera = cabecera.next;
+        }
+        return "";
+    }
+    
+    public void graficarMatriz(String title){
+        String resultado="digraph G{\nlabel="+ title +" ;\nnode [shape=square];\n";        
+        String conexiones="";
+        String nodos="";
+        
+        nodos += "INICIO[shape=Msquare,label=\""+title+"\",group=0];\n";
+        String rs = "rank = same {INICIO";
+        int maxColumnas = horizontal.max();
+        int maxFilas = vertical.max();
+        
+        for(int i = 0; i<maxColumnas; i++){
+            nodos += "C"+i+"[group="+(i+1)+"];\n";
+            if(i==0){
+                conexiones += "INICIO -> C0;\n";
+                rs += ",C0";
+            }else{
+                rs += ",C"+i;
+            } 
+            
+            if(i!=maxColumnas-1){
+                conexiones += "C"+i+"->C"+(i+1)+";\n";
+            }
+        }
+        rs += "}\n";
+        nodos += rs;
+        
+        for(int j = 0 ; j<maxFilas ; j++){
+            nodos += "F"+j+"[group=0];\n";
+            if(j==0){
+               conexiones += "INICIO -> F0;\n"; 
+            }
+            if(j!=maxFilas-1){
+                conexiones += "F"+j+"->F"+(j+1)+";\n";
+            }
+        }
+        
+        boolean primero;
+        for(int j = 0; j<maxFilas;j++){ 
+            String rank = "rank=same{F"+j;
+            primero = true;
+            String anterior = "";
+            for(int i=0;i<maxColumnas;i++){
+                String color = buscarColor(i, j);
+                if(!color.equals("")){
+                    rank +=",C"+i+"F"+j ;
+                    nodos += "C"+i+"F"+j+"[label=\"\",style=filled,color=\""+color+"\",group="+(i+1)+"];\n";
+                    if(primero == true){
+                        conexiones += "F"+j+"->C"+i+"F"+j+";\n";
+                        conexiones += "C"+i+"F"+j+"->F"+j+";\n";
+                        primero = false;
+                        anterior = "C"+i+"F"+j;
+                    }else{
+                        conexiones += anterior + "->C"+i+"F"+j+";\n";
+                        conexiones += "C"+i+"F"+j+"->"+anterior+";\n";
+                        anterior = "C"+i+"F"+j;
+                    }                    
+                }          
+            } 
+            rank +="};\n";
+            nodos += rank;
+        }
+        
+        for(int i = 0; i<maxColumnas;i++){ 
+            primero = true;
+            String anterior = "";
+            for(int j=0;j<maxFilas;j++){
+                String color = buscarColor(i, j);
+                if(!color.equals("")){
+                    if(primero == true){
+                        conexiones += "C"+i+"->C"+i+"F"+j+";\n";
+                        conexiones += "C"+i+"F"+j+"->C"+i+";\n";
+                        primero = false;
+                        anterior = "C"+i+"F"+j;
+                    }else{
+                        conexiones += anterior + "->C"+i+"F"+j+";\n";
+                        conexiones += "C"+i+"F"+j+"->"+anterior+";\n";
+                        anterior = "C"+i+"F"+j;
+                    }                    
+                }          
+            } 
+        }
+        
+        resultado+= "//Agregando nodods\n";
+        resultado+=nodos+"\n";
+        resultado+= "//Agregando conexiones\n";
+        resultado+=conexiones+"\n";
+        
+        resultado+="\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
  }

@@ -43,7 +43,7 @@ public class ABB {
             int act = ((Capa)raiz.valor).getId();
             if(id < act){
                 raiz.izquierda = agregar_recursivo(valor,raiz.izquierda);
-            }else{
+            }else if(act < id){
                 raiz.derecha = agregar_recursivo(valor,raiz.derecha);
             }
             return raiz;
