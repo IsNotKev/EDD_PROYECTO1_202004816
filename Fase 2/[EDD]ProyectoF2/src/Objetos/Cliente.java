@@ -14,7 +14,7 @@ import Estructuras.*;
 public class Cliente {
     
     //Datos Del Cliente
-    int dpi;
+    long dpi;
     String nombre;
     String contra;
     
@@ -23,7 +23,7 @@ public class Cliente {
     ABB capas;
     AVL imgs;
     
-    public Cliente(int dpi, String nombre, String contra) {
+    public Cliente(long dpi, String nombre, String contra) {
         
         this.dpi = dpi;
         this.nombre = nombre;
@@ -34,7 +34,7 @@ public class Cliente {
         imgs = new AVL();
     }   
     
-    public int getDpi() {
+    public long getDpi() {
         return dpi;
     }
 

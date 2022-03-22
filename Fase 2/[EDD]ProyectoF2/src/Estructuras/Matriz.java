@@ -125,15 +125,21 @@ public class Matriz {
         Nodo h = horizontal.search(x);
         Nodo v = vertical.search(y);
         
-        if(h==null && v == null){
-            caso1(valor,x,y);
-        }else if(h==null && v != null){
-            caso2(valor,x,y);
-        }else if(h!=null && v == null){
-            caso3(valor,x,y);
+        String nuevoColor = buscarColor(x,y);
+        
+        if(nuevoColor.equals("")){
+            if(h==null && v == null){
+                caso1(valor,x,y);
+            }else if(h==null && v != null){
+                caso2(valor,x,y);
+            }else if(h!=null && v == null){
+                caso3(valor,x,y);
+            }else{
+                caso4(valor,x,y);
+            }
         }else{
-            caso4(valor,x,y);
-        }
+        
+        }              
     }
     
     // No existe ni x ni y

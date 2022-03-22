@@ -45,7 +45,9 @@ public class ABB {
                 raiz.izquierda = agregar_recursivo(valor,raiz.izquierda);
             }else if(act < id){
                 raiz.derecha = agregar_recursivo(valor,raiz.derecha);
-            }
+            }/*else{
+                System.out.println("ya existe");
+            }*/
             return raiz;
         }       
     }

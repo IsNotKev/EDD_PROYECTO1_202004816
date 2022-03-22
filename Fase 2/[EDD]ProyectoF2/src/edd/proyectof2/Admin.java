@@ -224,12 +224,13 @@ public class Admin extends javax.swing.JFrame {
         for (JsonElement obj : gsonArr) {
             // Object of array
             JsonObject gsonObj = obj.getAsJsonObject();
-            int dpi = gsonObj.get("dpi").getAsInt();
+            long dpi = Long.parseLong(gsonObj.get("dpi").getAsString());
             String nombre = gsonObj.get("nombre_cliente").getAsString();
-            String contra = gsonObj.get("password").getAsString();
+            String contra = gsonObj.get("password").getAsString();                                    
             
             Cliente n = new Cliente(dpi,nombre,contra);
             
+            EDDProyectoF2.clientes.insertar(n);
             //n.imprimir();
         }
     }
