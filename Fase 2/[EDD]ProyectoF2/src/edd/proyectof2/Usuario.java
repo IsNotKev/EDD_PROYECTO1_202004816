@@ -5,9 +5,9 @@
  */
 package edd.proyectof2;
 
-import Estructuras.Matriz;
+import Estructuras.*;
+import Objetos.Album;
 import Objetos.Capa;
-import Objetos.Cliente;
 import com.google.gson.*;
 import java.awt.Image;
 import java.io.*;
@@ -222,6 +222,9 @@ public class Usuario extends javax.swing.JFrame {
         // Obtain Array
         JsonArray gsonArr = parser.parse(text).getAsJsonArray();
         // for each element of array
+        
+        Lista albumes = new Lista();
+        
         for (JsonElement obj : gsonArr) {
             // Object of array
             JsonObject gsonObj = obj.getAsJsonObject();
@@ -231,12 +234,19 @@ public class Usuario extends javax.swing.JFrame {
             //System.out.println("-------------------------- "+nombre+" --------------------");
             
             JsonArray imgs = gsonObj.get("imgs").getAsJsonArray();
+            
+            Lista miLista = new Lista();
+            
             for(JsonElement pix: imgs){
                 int c = pix.getAsInt();
+                miLista.add(c);
                 //System.out.println("-> " + c);
             }
-            
+            Album miAlbum = new Album(nombre,miLista);
+            albumes.add(miAlbum);
         }
+        
+        albumes.graficar("Ejemplo");
     }
     
     public static void generarImgs(String text){
@@ -262,6 +272,8 @@ public class Usuario extends javax.swing.JFrame {
     }
     
     public static void generarCapas(String text){
+        
+        ABB nuevoArbol = new ABB();
         
         JsonParser parser = new JsonParser();
         // Obtain Array
@@ -289,13 +301,14 @@ public class Usuario extends javax.swing.JFrame {
             Capa nuevaCapa = new Capa(id,miMatriz);           
             EDDProyectoF2.clientePrueba.agregarCapa(nuevaCapa);
             
-            System.out.println("-------------------"+id+"-----------------");
+            /*System.out.println("-------------------"+id+"-----------------");
             miMatriz.imprimir_horizontal();
             
             miMatriz.graficarMatriz("capa"+id);
-            EDDProyectoF2.graficarDot("capa"+id);
+            EDDProyectoF2.graficarDot("capa"+id);*/
+            nuevoArbol.agregar(nuevaCapa);
         }
-        
+        nuevoArbol.graficar("Ejemplo");
         System.out.println("Capas creadas :v ");
         
     }

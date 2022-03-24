@@ -27,32 +27,7 @@ public class EDDProyectoF2 {
         u.setVisible(true); */
         
         Admin ad = new Admin();
-        ad.setVisible(true);
-        
-        AVL prueba = new AVL();
-        prueba.insertar(new Imagen(74, new ABB()));
-        prueba.insertar(new Imagen(40, new ABB()));
-        prueba.insertar(new Imagen(23, new ABB()));
-        prueba.insertar(new Imagen(8, new ABB()));
-        prueba.insertar(new Imagen(6, new ABB()));
-        prueba.insertar(new Imagen(37, new ABB()));
-        prueba.insertar(new Imagen(32, new ABB()));
-        prueba.insertar(new Imagen(45, new ABB()));
-        prueba.insertar(new Imagen(25, new ABB()));
-        prueba.insertar(new Imagen(1, new ABB()));
-        prueba.insertar(new Imagen(88, new ABB()));
-        prueba.insertar(new Imagen(29, new ABB()));
-        prueba.insertar(new Imagen(4, new ABB()));
-        prueba.insertar(new Imagen(11, new ABB()));
-        prueba.insertar(new Imagen(39, new ABB()));
-        prueba.insertar(new Imagen(14, new ABB()));
-        prueba.insertar(new Imagen(66, new ABB()));
-        prueba.insertar(new Imagen(24, new ABB()));
-        prueba.insertar(new Imagen(12, new ABB()));
-        prueba.insertar(new Imagen(7, new ABB()));
-        
-        prueba.graficar("Prueba");
-        graficarDot("Prueba");
+        ad.setVisible(true);       
         
     }
     

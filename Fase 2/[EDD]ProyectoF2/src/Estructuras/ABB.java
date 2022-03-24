@@ -6,6 +6,9 @@
 package Estructuras;
 
 import Objetos.Capa;
+import edd.proyectof2.EDDProyectoF2;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -50,5 +53,69 @@ public class ABB {
             }*/
             return raiz;
         }       
+    }
+    
+    public static ArrayList<String> graficar_recursivo(Nodo raiz){
+        ArrayList<String> respuesta = new ArrayList<String>();
+        
+        int numero;
+        
+        if(raiz == null){
+            respuesta.add("");
+            respuesta.add("");
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            numero = ((Capa)raiz.valor).getId();           
+            respuesta.add("N"+EDDProyectoF2.cont);
+            respuesta.add("N"+EDDProyectoF2.cont+"[label=\""+numero+"\"]\n");
+            EDDProyectoF2.cont += 1;
+        }else{
+            numero = ((Capa)raiz.valor).getId();
+            String conj = "";
+            ArrayList<String> izquierda = graficar_recursivo(raiz.izquierda);
+            ArrayList<String> derecha = graficar_recursivo(raiz.derecha);
+            
+            
+            
+            conj += "N"+EDDProyectoF2.cont+"[label=\""+numero+"\"]\n";
+            
+            
+            if(!izquierda.get(0).equals("")){
+                conj += "N"+EDDProyectoF2.cont + "->" + izquierda.get(0) + ";\n";
+            }
+            
+            if(!derecha.get(0).equals("")){
+                conj += "N"+EDDProyectoF2.cont + "->" + derecha.get(0) + ";\n";
+            }
+            
+            respuesta.add("N"+EDDProyectoF2.cont);
+            respuesta.add(conj + izquierda.get(1) + derecha.get(1));
+            EDDProyectoF2.cont += 1;
+           
+        }
+        
+        return respuesta;
+    }
+    
+    public void graficar(String title){
+        String resultado="digraph G{\nlabel=\""+title+"\";\nnode [shape=circle];\n";        
+       
+        resultado += graficar_recursivo(raiz).get(1);
+        
+        resultado+="}\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            EDDProyectoF2.graficarDot(title);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        EDDProyectoF2.cont = 0;
     }
 }

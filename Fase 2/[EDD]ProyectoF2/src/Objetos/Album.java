@@ -12,20 +12,20 @@ import Estructuras.Lista;
  * @author kevin
  */
 public class Album {
-    int id;
+    String nombre;
     Lista imgs;
 
-    public Album(int id, Lista imgs) {
-        this.id = id;
+    public Album(String nombre, Lista imgs) {
+        this.nombre = nombre;
         this.imgs = imgs;
     }
 
-    public int getId() {
-        return id;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Lista getImgs() {
@@ -35,6 +35,5 @@ public class Album {
     public void setImgs(Lista imgs) {
         this.imgs = imgs;
     }
-    
     
 }

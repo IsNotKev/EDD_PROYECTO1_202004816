@@ -158,7 +158,7 @@ public class Admin extends javax.swing.JFrame {
             }
             
             //System.out.println(t);
-            generarClientes(t);
+            
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {
@@ -170,6 +170,9 @@ public class Admin extends javax.swing.JFrame {
                 entrada.close();
             }
         }
+        
+        generarClientes(t);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -231,8 +234,9 @@ public class Admin extends javax.swing.JFrame {
             Cliente n = new Cliente(dpi,nombre,contra);
             
             EDDProyectoF2.clientes.insertar(n);
-            //n.imprimir();
         }
+        
+        EDDProyectoF2.clientes.graficar("HolaBB");
     }
     
     
