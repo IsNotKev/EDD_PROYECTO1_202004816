@@ -8,6 +8,7 @@ package Estructuras;
 import Objetos.Cliente;
 import edd.proyectof2.EDDProyectoF2;
 import java.io.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,17 +40,24 @@ public class ArbolB {
     }
     
     public void insertar(Cliente key){
-        Nodo r = raiz;
-        nonFullInsert(raiz,key);
         
-        if(estoyLleno(raiz)){
-            Nodo s = new Nodo();
-            s.esHoja = false;
-            raiz = s;
-            raiz.n0 = r;
-            split(raiz,0,r);
-        }
+        Cliente n = buscar_recursivo(key.getDpi(),raiz);
+        
+        if(n!=null){
+            JOptionPane.showMessageDialog(null, "Cliente Con Dpi: "+n.getDpi()+", Ya Existe.","Cliente",JOptionPane.ERROR_MESSAGE);
+        }else{
+            Nodo r = raiz;
+            nonFullInsert(raiz,key);
 
+            if(estoyLleno(raiz)){
+                Nodo s = new Nodo();
+                s.esHoja = false;
+                raiz = s;
+                raiz.n0 = r;
+                split(raiz,0,r);
+            }
+        }
+ 
     }
     
     public void nonFullInsert(Nodo x, Cliente key){
@@ -223,7 +231,9 @@ public class ArbolB {
     public void graficar(String title){
     String resultado="digraph G{\nlabel=\""+title+"\";\n";        
        
-        resultado += graficar_recursivo(raiz,"");
+        if(raiz.info1!=null){
+            resultado += graficar_recursivo(raiz,"");
+        }
         
         resultado+="\n}";
         
@@ -241,5 +251,79 @@ public class ArbolB {
         }
         
         EDDProyectoF2.cont = 0;
+    }
+    
+    public Cliente buscar(long dpi){
+        return buscar_recursivo(dpi,raiz);
+    }
+    
+    public Cliente buscar_recursivo(long dpi, Nodo raiz){
+        Nodo r = raiz;
+        if(r.info1 != null && r.info1.getDpi() == dpi){
+            return r.info1;
+        }else if( r.info2 != null && r.info2.getDpi() == dpi){
+            return r.info2;
+        }else if(r.info3 != null && r.info3.getDpi() == dpi){
+            return r.info3;
+        }else if(r.info4 != null && r.info4.getDpi() == dpi){
+            return r.info4;
+        }else{
+            if(tengoHijos(r)){
+                if(r.info1 == null || (r.n0 != null && r.info1.getDpi() > dpi)){
+                    return buscar_recursivo(dpi,r.n0);
+                }else if(r.info2 == null || (r.n1 != null && r.info2.getDpi() > dpi)){
+                    return buscar_recursivo(dpi,r.n1);
+                }else if(r.info3 == null || (r.n2 != null && r.info3.getDpi() > dpi)){
+                    return buscar_recursivo(dpi,r.n2);
+                }else if(r.info4 == null || (r.n3 != null && r.info4.getDpi() > dpi)){
+                    return buscar_recursivo(dpi,r.n3);
+                }else{
+                    return buscar_recursivo(dpi,r.n4);
+                }   
+            }else{
+                return null;
+            }
+        }
+    }
+    
+    public boolean tengoHijos(Nodo raiz){
+        if(raiz.n0 != null || raiz.n1 != null || raiz.n2 != null || raiz.n3 != null || raiz.n4 != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public void actualizar(Cliente key){
+        actualizar_recursivo(key,raiz);
+    }
+    
+    public void actualizar_recursivo(Cliente key, Nodo raiz){
+        Nodo r = raiz;
+        if(r.info1 != null && r.info1.getDpi() == key.getDpi()){
+            r.info1 = key;
+        }else if( r.info2 != null && r.info2.getDpi() == key.getDpi()){
+            r.info2 = key;
+        }else if(r.info3 != null && r.info3.getDpi() == key.getDpi()){
+            r.info3 = key;
+        }else if(r.info4 != null && r.info4.getDpi() == key.getDpi()){
+            r.info4 = key;
+        }else{
+            if(tengoHijos(r)){
+                if(r.info1 == null || (r.n0 != null && r.info1.getDpi() > key.getDpi())){
+                    actualizar_recursivo(key,r.n0);
+                }else if(r.info2 == null || (r.n1 != null && r.info2.getDpi() > key.getDpi())){
+                    actualizar_recursivo(key,r.n1);
+                }else if(r.info3 == null || (r.n2 != null && r.info3.getDpi() > key.getDpi())){
+                    actualizar_recursivo(key,r.n2);
+                }else if(r.info4 == null || (r.n3 != null && r.info4.getDpi() > key.getDpi())){
+                    actualizar_recursivo(key,r.n3);
+                }else{
+                    actualizar_recursivo(key,r.n4);
+                }   
+            }else{
+                JOptionPane.showMessageDialog(null, "Error Al Guardar Datos.","Cliente",JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }

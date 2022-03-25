@@ -138,7 +138,7 @@ public class Matriz {
                 caso4(valor,x,y);
             }
         }else{
-        
+            cambiarColor(x,y,valor);
         }              
     }
     
@@ -331,8 +331,42 @@ public class Matriz {
         return "";
     }
     
+    public void cambiarColor(int x, int y, String nColor){
+        Nodo cabecera = horizontal.raiz;
+        while(cabecera != null){
+            Nodo aux = cabecera.abajo;
+            while(aux != null){
+                if(aux.x == x && aux.y == y){
+                    aux.info = nColor;
+                }
+                //System.out.println(aux.info + ", x=" + aux.x + ", y = " +aux.y);
+                aux = aux.abajo;
+            }
+            cabecera = cabecera.next;
+        }
+    }
+    
+    public void agregarCapa(Matriz nueva){
+        Nodo cabecera = nueva.horizontal.raiz;
+        while(cabecera != null){
+            Nodo aux = cabecera.abajo;
+            while(aux != null){
+                String color = buscarColor(aux.x,aux.y);
+                
+                if(color.equals("")){
+                    insertar((String)aux.info,aux.x,aux.y);
+                }else{
+                    cambiarColor(aux.x,aux.y,(String)aux.info);
+                }
+                
+                aux = aux.abajo;
+            }
+            cabecera = cabecera.next;
+        }
+    }
+    
     public void graficarMatriz(String title){
-        String resultado="digraph G{\nlabel="+ title +" ;\nnode [shape=square];\n";        
+        String resultado="digraph G{\nlabel=\""+ title +"\" ;\nnode [shape=square];\n";        
         String conexiones="";
         String nodos="";
         
@@ -341,7 +375,7 @@ public class Matriz {
         int maxColumnas = horizontal.max();
         int maxFilas = vertical.max();
         
-        for(int i = 0; i<maxColumnas; i++){
+        for(int i = 0; i<maxColumnas+1; i++){
             nodos += "C"+i+"[group="+(i+1)+"];\n";
             if(i==0){
                 conexiones += "INICIO -> C0;\n";
@@ -350,29 +384,29 @@ public class Matriz {
                 rs += ",C"+i;
             } 
             
-            if(i!=maxColumnas-1){
+            if(i!=maxColumnas){
                 conexiones += "C"+i+"->C"+(i+1)+";\n";
             }
         }
         rs += "}\n";
         nodos += rs;
         
-        for(int j = 0 ; j<maxFilas ; j++){
+        for(int j = 0 ; j<maxFilas+1 ; j++){
             nodos += "F"+j+"[group=0];\n";
             if(j==0){
                conexiones += "INICIO -> F0;\n"; 
             }
-            if(j!=maxFilas-1){
+            if(j!=maxFilas){
                 conexiones += "F"+j+"->F"+(j+1)+";\n";
             }
         }
         
         boolean primero;
-        for(int j = 0; j<maxFilas;j++){ 
+        for(int j = 0; j<maxFilas+1;j++){ 
             String rank = "rank=same{F"+j;
             primero = true;
             String anterior = "";
-            for(int i=0;i<maxColumnas;i++){
+            for(int i=0;i<maxColumnas+1;i++){
                 String color = buscarColor(i, j);
                 if(!color.equals("")){
                     rank +=",C"+i+"F"+j ;
@@ -393,10 +427,10 @@ public class Matriz {
             nodos += rank;
         }
         
-        for(int i = 0; i<maxColumnas;i++){ 
+        for(int i = 0; i<maxColumnas+1;i++){ 
             primero = true;
             String anterior = "";
-            for(int j=0;j<maxFilas;j++){
+            for(int j=0;j<maxFilas+1;j++){
                 String color = buscarColor(i, j);
                 if(!color.equals("")){
                     if(primero == true){

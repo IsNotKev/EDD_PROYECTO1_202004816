@@ -232,17 +232,25 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingrese todos los datos.","Error",JOptionPane.ERROR_MESSAGE);
         }else{
             try {
-                int dpi = Integer.parseInt(jTextField1.getText());
+                long dpi = Long.parseLong(jTextField1.getText());
                 String nombre = jTextField2.getText();
                 String contra = jPasswordField1.getText();
                 //System.out.println(dpi+nombre+contra);
                 Cliente nuevoCliente = new Cliente(dpi,nombre,contra);
                 
-                JOptionPane.showMessageDialog(null,"Usuario creado exitosamente.","Usuario",JOptionPane.INFORMATION_MESSAGE);
-                Login log = new Login();
-                log.setVisible(true);
-
-                dispose();
+                Cliente prueba = EDDProyectoF2.clientes.buscar(dpi);
+                
+                if(prueba==null){
+                    EDDProyectoF2.clientes.insertar(nuevoCliente);              
+                    JOptionPane.showMessageDialog(null,"Usuario creado exitosamente.","Usuario",JOptionPane.INFORMATION_MESSAGE);
+                    Login log = new Login();
+                    log.setVisible(true);
+                    dispose();               
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cliente Con Dpi: "+prueba.getDpi()+", Ya Existe.","Cliente",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,"Ingrese datos correctos","Error",JOptionPane.ERROR_MESSAGE);
             }                              

@@ -6,6 +6,7 @@
 package Objetos;
 
 import Estructuras.*;
+import edd.proyectof2.Usuario;
 
 /**
  *
@@ -85,4 +86,9 @@ public class Cliente {
         capas.agregar(capa);
     }
     
+    public void generarVentana(){
+        Usuario us = new Usuario();
+        us.setVisible(true);
+        capas.mostrarCapas(us);
+    }
 }

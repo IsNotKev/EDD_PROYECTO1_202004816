@@ -7,6 +7,7 @@ package Estructuras;
 
 import Objetos.Capa;
 import edd.proyectof2.EDDProyectoF2;
+import edd.proyectof2.Usuario;
 import java.io.*;
 import java.util.*;
 
@@ -117,5 +118,27 @@ public class ABB {
         }
         
         EDDProyectoF2.cont = 0;
+    }
+    
+    public void mostrarCapas(Usuario us){
+        mostrarCapas(us,raiz);
+    }
+    
+    public void mostrarCapas(Usuario us,Nodo raiz){
+        
+        int no ;
+        
+        if(raiz == null){
+            
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            no = ((Capa)raiz.valor).getId();
+            us.jComboBox1.addItem("Capa" + no);
+        }else{
+            no = ((Capa)raiz.valor).getId();
+            us.jComboBox1.addItem("Capa" + no);   
+            mostrarCapas(us,raiz.izquierda);
+            mostrarCapas(us,raiz.derecha);
+        }
+        
     }
 }

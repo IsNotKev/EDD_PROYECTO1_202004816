@@ -5,6 +5,7 @@
  */
 package edd.proyectof2;
 
+import Objetos.Cliente;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -178,7 +179,28 @@ public class Login extends javax.swing.JFrame {
                 dispose();
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectas.","Log In",JOptionPane.ERROR_MESSAGE);
+            /*try {
+                                              
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectas.","Log In",JOptionPane.ERROR_MESSAGE);
+            }  */
+            
+            long dpi = Long.parseLong(usuario);
+            Cliente n = EDDProyectoF2.clientes.buscar(dpi);
+            
+                if(n!=null){
+                    n.imprimir();
+                    if(n.getContra().equals(contra)){
+                        EDDProyectoF2.clienteActual = n;
+                        EDDProyectoF2.clienteActual.generarVentana();
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Bienvenido "+n.getNombre()+".","Cliente",JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectas.","Log In",JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectas.","Log In",JOptionPane.ERROR_MESSAGE);
+                }
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
