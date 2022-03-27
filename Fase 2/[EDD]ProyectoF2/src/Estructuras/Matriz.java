@@ -347,21 +347,23 @@ public class Matriz {
     }
     
     public void agregarCapa(Matriz nueva){
-        Nodo cabecera = nueva.horizontal.raiz;
-        while(cabecera != null){
-            Nodo aux = cabecera.abajo;
-            while(aux != null){
-                String color = buscarColor(aux.x,aux.y);
-                
-                if(color.equals("")){
-                    insertar((String)aux.info,aux.x,aux.y);
-                }else{
-                    cambiarColor(aux.x,aux.y,(String)aux.info);
+        if(nueva != null){
+            Nodo cabecera = nueva.horizontal.raiz;
+            while(cabecera != null){
+                Nodo aux = cabecera.abajo;
+                while(aux != null){
+                    String color = buscarColor(aux.x,aux.y);
+
+                    if(color.equals("")){
+                        this.insertar((String)aux.info,aux.x,aux.y);
+                    }else{
+                        cambiarColor(aux.x,aux.y,(String)aux.info);
+                    }
+
+                    aux = aux.abajo;
                 }
-                
-                aux = aux.abajo;
+                cabecera = cabecera.next;
             }
-            cabecera = cabecera.next;
         }
     }
     

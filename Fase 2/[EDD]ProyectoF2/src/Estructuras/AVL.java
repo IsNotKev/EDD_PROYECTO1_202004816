@@ -7,6 +7,7 @@ package Estructuras;
 
 import Objetos.Imagen;
 import edd.proyectof2.EDDProyectoF2;
+import edd.proyectof2.Usuario;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author kevin
  */
 public class AVL {
-    Nodo raiz;
+    public Nodo raiz;
     
     public static class Nodo{
         
@@ -216,4 +217,72 @@ public class AVL {
         
         EDDProyectoF2.cont = 0;
     }
+    
+    public void mostrarImgs(Usuario us){
+        mostrarImgs(us,raiz);
+    }
+    
+    public void mostrarImgs(Usuario us,Nodo raiz){
+        
+        int no ;
+        
+        if(raiz == null){
+            return;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            no = ((Imagen)raiz.valor).getId();
+            us.jComboBox2.addItem(""+no);
+        }else{
+            no = ((Imagen)raiz.valor).getId();
+            us.jComboBox2.addItem(""+no);   
+            mostrarImgs(us,raiz.izquierda);
+            mostrarImgs(us,raiz.derecha);
+        }
+        
+    }
+    
+    public ABB buscar(int n){
+        Nodo aux = raiz;
+        
+        while(aux != null){
+            if(((Imagen)aux.valor).getId() == n){
+                return((Imagen)aux.valor).getCapas();
+            }else if(((Imagen)aux.valor).getId() > n){
+                aux = aux.izquierda;
+            }else{
+                aux = aux.derecha;
+            }
+        }
+        return null;
+    }
+    
+    public Imagen obtenerMayor(Nodo raiz){
+        if(raiz.derecha == null){
+            Imagen valor = (Imagen)raiz.valor;
+            return valor;
+        }else{
+            return obtenerMayor(raiz.derecha);
+        }
+    }
+    
+    public Nodo eliminar(int n, Nodo raiz){
+        if(((Imagen)raiz.valor).getId() == n){
+            if(raiz.izquierda == null && raiz.derecha == null){
+                raiz = null;
+            }else if(raiz.izquierda != null){
+                Imagen x = obtenerMayor(raiz.izquierda);
+                raiz.valor = x;
+                raiz.izquierda = eliminar(x.getId(),raiz.izquierda);
+            }else{
+                raiz = raiz.derecha;
+            }
+        }else{
+            if(((Imagen)raiz.valor).getId()<n){
+                raiz.derecha = eliminar(n,raiz.derecha);
+            }else{
+                raiz.izquierda = eliminar(n,raiz.izquierda);
+            }
+        }
+        return raiz;
+    }
+    
 }

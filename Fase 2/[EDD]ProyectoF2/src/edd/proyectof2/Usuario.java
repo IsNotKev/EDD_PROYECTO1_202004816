@@ -8,6 +8,7 @@ package edd.proyectof2;
 import Estructuras.*;
 import Objetos.Album;
 import Objetos.Capa;
+import Objetos.Imagen;
 import com.google.gson.*;
 import java.awt.Image;
 import java.io.*;
@@ -47,6 +48,17 @@ public class Usuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton9 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,7 +116,7 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(153, 153, 153));
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setMaximumRowCount(12);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +125,112 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Ver Listado De Álbumes");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(0, 0, 0));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Ver Árbol De Capas");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(0, 0, 0));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Ver Árbol De Imágenes");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Imagen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        jButton10.setBackground(new java.awt.Color(0, 0, 0));
+        jButton10.setForeground(new java.awt.Color(255, 0, 51));
+        jButton10.setText("Eliminar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("PreOrden");
+
+        jRadioButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton2.setText("InOrden");
+
+        jRadioButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton3.setText("PostOrden");
+
+        jComboBox2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jButton9.setBackground(new java.awt.Color(0, 0, 0));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Ver Imagen");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(41, 41, 41)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3))
+                .addGap(50, 50, 50))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Capa:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,43 +238,56 @@ public class Usuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addGap(57, 57, 57)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,7 +333,18 @@ public class Usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay capas.","Cliente",JOptionPane.ERROR_MESSAGE);
         }else{
             //System.out.println(jComboBox1.getSelectedItem());
-            String nombre = EDDProyectoF2.clienteActual.getDpi()+"_"+jComboBox1.getSelectedItem();
+            /*String a = (String)jComboBox1.getSelectedItem();
+            int no = Integer.parseInt(a);
+            EDDProyectoF2.clienteActual.graficarCapa(no);
+            
+            try {
+                //Ponemos a "Dormir" el programa durante los ms que queremos
+                Thread.sleep(1*1000);
+             } catch (Exception e) {
+                System.out.println(e);
+             }*/
+            
+            String nombre = EDDProyectoF2.clienteActual.getDpi()+"_Capa"+jComboBox1.getSelectedItem();
             ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
             Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(), Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -214,6 +356,101 @@ public class Usuario extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        EDDProyectoF2.clienteActual.graficarAlbum();
+        
+        try {
+            //Ponemos a "Dormir" el programa durante los ms que queremos
+            Thread.sleep(1*1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+        
+        String nombre = EDDProyectoF2.clienteActual.getDpi()+"_Albumes";
+        ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        jLabel1.setIcon(iconoEscalado);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        EDDProyectoF2.clienteActual.graficarACapas();
+        
+        try {
+            //Ponemos a "Dormir" el programa durante los ms que queremos
+            Thread.sleep(1*1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+        
+        String nombre = EDDProyectoF2.clienteActual.getDpi()+"_Capas";
+        ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        jLabel1.setIcon(iconoEscalado);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        EDDProyectoF2.clienteActual.graficarAImagenes();
+        
+        try {
+            //Ponemos a "Dormir" el programa durante los ms que queremos
+            Thread.sleep(1*1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+        
+        String nombre = EDDProyectoF2.clienteActual.getDpi()+"_Imagenes";
+        ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        jLabel1.setIcon(iconoEscalado);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        
+        if(jComboBox2.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(null, "No hay imagenes.","Cliente",JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+            String a = (String)jComboBox2.getSelectedItem();
+            int no = Integer.parseInt(a);
+            String nombre;
+            if(jRadioButton1.isSelected()){
+                //EDDProyectoF2.clienteActual.generarImagen(no, "Pre");
+                nombre = EDDProyectoF2.clienteActual.getDpi()+"_pre_img"+no;
+            }else if(jRadioButton2.isSelected()){
+                //EDDProyectoF2.clienteActual.generarImagen(no, "In");
+                nombre = EDDProyectoF2.clienteActual.getDpi()+"_in_img"+no;
+            }else{
+                //EDDProyectoF2.clienteActual.generarImagen(no, "Post");
+                nombre = EDDProyectoF2.clienteActual.getDpi()+"_post_img"+no;
+            }
+
+            ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
+            Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(), Image.SCALE_SMOOTH);
+            Icon iconoEscalado = new ImageIcon(imgEscalada);
+            jLabel1.setIcon(iconoEscalado);
+        }
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        if(jComboBox2.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(null, "No hay imagenes.","Cliente",JOptionPane.ERROR_MESSAGE);
+        }else{
+            String a = (String)jComboBox2.getSelectedItem();
+            int no = Integer.parseInt(a);
+            
+            EDDProyectoF2.clienteActual.eliminarImagen(no);
+            JOptionPane.showMessageDialog(null, "Imagen eliminada.","Cliente",JOptionPane.INFORMATION_MESSAGE);
+            
+           int c = jComboBox2.getSelectedIndex();
+           jComboBox2.removeItemAt(c);
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,8 +493,6 @@ public class Usuario extends javax.swing.JFrame {
         JsonArray gsonArr = parser.parse(text).getAsJsonArray();
         // for each element of array
         
-        Lista albumes = new Lista();
-        
         for (JsonElement obj : gsonArr) {
             // Object of array
             JsonObject gsonObj = obj.getAsJsonObject();
@@ -276,13 +511,13 @@ public class Usuario extends javax.swing.JFrame {
                 //System.out.println("-> " + c);
             }
             Album miAlbum = new Album(nombre,miLista);
-            albumes.add(miAlbum);
+            EDDProyectoF2.clienteActual.agregarAlbum(miAlbum);
         }
-        
+        JOptionPane.showMessageDialog(null, "Albumes creados exitosamente.","Cliente",JOptionPane.INFORMATION_MESSAGE);
         //albumes.graficar("Ejemplo");
     }
     
-    public static void generarImgs(String text){
+    public void generarImgs(String text){
         JsonParser parser = new JsonParser();
         // Obtain Array
         JsonArray gsonArr = parser.parse(text).getAsJsonArray();
@@ -295,13 +530,39 @@ public class Usuario extends javax.swing.JFrame {
             
             //System.out.println("-------------------------- "+id+" --------------------");
             
+            ABB n = new ABB();
+            
             JsonArray capas = gsonObj.get("capas").getAsJsonArray();
             for(JsonElement pix: capas){
                 int c = pix.getAsInt();
+                n.agregar(new Capa(c,null));
+                
                 //System.out.println("-> " + c);
+                
             }
             
+            Imagen nImagen = new Imagen(id,n);
+            EDDProyectoF2.clienteActual.agregarImagen(nImagen);
+            
+            String dpi = EDDProyectoF2.clienteActual.getDpi()+"_";
+            
+            //PreOrden
+            Matriz pre = n.crearImagen("Pre");
+            pre.graficarMatriz(dpi+"pre_img"+id);
+            EDDProyectoF2.graficarDot(dpi+"pre_img"+id);
+            //InOrden
+            Matriz in = n.crearImagen("In");
+            in.graficarMatriz(dpi+"in_img"+id);
+            EDDProyectoF2.graficarDot(dpi+"in_img"+id);
+            //PostOrden
+            Matriz post = n.crearImagen("Post");
+            post.graficarMatriz(dpi+"post_img"+id);
+            EDDProyectoF2.graficarDot(dpi+"post_img"+id);
+      
+            jComboBox2.addItem(""+id);
         }
+        
+        JOptionPane.showMessageDialog(null, "Imagenes creadas exitosamente.","Cliente",JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void generarCapas(String text){
@@ -342,7 +603,7 @@ public class Usuario extends javax.swing.JFrame {
 
             EDDProyectoF2.clienteActual.agregarCapa(nuevaCapa);
             
-            jComboBox1.addItem("Capa"+id);
+            jComboBox1.addItem(""+id);
             
             //nImagen.agregarCapa(miMatriz);
         }
@@ -390,12 +651,23 @@ public class Usuario extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     // End of variables declaration//GEN-END:variables
 }

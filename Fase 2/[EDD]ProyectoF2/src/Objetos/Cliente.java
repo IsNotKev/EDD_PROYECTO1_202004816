@@ -6,6 +6,7 @@
 package Objetos;
 
 import Estructuras.*;
+import edd.proyectof2.EDDProyectoF2;
 import edd.proyectof2.Usuario;
 
 /**
@@ -90,5 +91,47 @@ public class Cliente {
         Usuario us = new Usuario();
         us.setVisible(true);
         capas.mostrarCapas(us);
+        imgs.mostrarImgs(us);
     }
+    
+    public void agregarAlbum(Album nAlbum){
+        albumes.add(nAlbum);
+    }
+    
+    public void graficarAlbum(){
+        albumes.graficar(dpi+"_Albumes");
+        EDDProyectoF2.graficarDot(dpi+"_Albumes");
+    }
+    
+    public void graficarACapas(){
+        capas.graficar(dpi+"_Capas");
+    }
+    
+    public void graficarCapa(int n){
+        Matriz miMatriz = capas.buscar(n);
+        miMatriz.graficarMatriz(dpi+"_Capa"+n);
+        EDDProyectoF2.graficarDot(dpi+"_Capa"+n);
+    }
+    
+    public void agregarImagen(Imagen img){
+        imgs.insertar(img);
+    }
+    
+    public void graficarAImagenes(){
+        imgs.graficar(dpi+"_Imagenes");
+        EDDProyectoF2.graficarDot(dpi+"_Imagenes");
+    }
+    
+    public void generarImagen(int n, String t){
+        ABB qCapas = imgs.buscar(n);
+        Matriz img;
+        img = qCapas.crearImagen(t);
+        img.graficarMatriz(dpi+"_img"+n);
+        EDDProyectoF2.graficarDot(dpi+"_img"+n);
+    }
+    
+    public void eliminarImagen(int n){
+        imgs.raiz = imgs.eliminar(n,imgs.raiz);
+    }
+    
 }

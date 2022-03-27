@@ -129,16 +129,108 @@ public class ABB {
         int no ;
         
         if(raiz == null){
-            
+            return;
         }else if(raiz.izquierda == null && raiz.derecha == null){
             no = ((Capa)raiz.valor).getId();
-            us.jComboBox1.addItem("Capa" + no);
+            us.jComboBox1.addItem(""+no);
         }else{
             no = ((Capa)raiz.valor).getId();
-            us.jComboBox1.addItem("Capa" + no);   
+            us.jComboBox1.addItem(""+no);   
             mostrarCapas(us,raiz.izquierda);
             mostrarCapas(us,raiz.derecha);
         }
         
+    }
+    
+    public Matriz buscar(int n){
+        Nodo aux = raiz;
+        
+        while(aux != null){
+            if(((Capa)aux.valor).getId() == n){
+                return((Capa)aux.valor).getPixeles();
+            }else if(n<((Capa)aux.valor).getId()){
+                aux = aux.izquierda;
+            }else{
+                aux = aux.derecha;
+            }
+        }
+        return null;
+    }
+    
+    public Matriz crearImagen(String t){
+        Matriz img = null;
+        switch(t){
+            case "In":
+                img = imagenIn(raiz);
+                break;
+            case "Post":
+                img = imagenPost(raiz);
+                break;
+            case "Pre":
+                img = imagenPre(raiz);
+                break;
+            default:
+                System.out.println("ERROR");
+                break;
+        }
+        return img;
+    }
+    
+    public Matriz imagenPre(Nodo raiz){
+        Matriz img = new Matriz();
+        int no;
+        if(raiz == null){
+            img = null;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            no = ((Capa)raiz.valor).getId();
+            img.agregarCapa(EDDProyectoF2.clienteActual.getCapas().buscar(no));
+        }else{
+            no = ((Capa)raiz.valor).getId();
+            img.agregarCapa(EDDProyectoF2.clienteActual.getCapas().buscar(no));   
+            img.agregarCapa(imagenPre(raiz.izquierda));
+            img.agregarCapa(imagenPre(raiz.derecha));
+        }
+        
+        return img;
+    }
+    public Matriz imagenIn(Nodo raiz){
+        Matriz img = new Matriz();
+        
+        int no;
+        if(raiz == null){
+            img = null;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            no = ((Capa)raiz.valor).getId();
+            img.agregarCapa(EDDProyectoF2.clienteActual.getCapas().buscar(no));
+        }else{ 
+            
+            no = ((Capa)raiz.valor).getId();
+            
+            img.agregarCapa(imagenIn(raiz.izquierda));
+            img.agregarCapa(EDDProyectoF2.clienteActual.getCapas().buscar(no));
+            img.agregarCapa(imagenIn(raiz.derecha));
+        }
+        
+        return img;
+    }
+    public Matriz imagenPost(Nodo raiz){
+        Matriz img = new Matriz();
+        
+        int no;
+        if(raiz == null){
+            img = null;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            no = ((Capa)raiz.valor).getId();
+            img = EDDProyectoF2.clienteActual.getCapas().buscar(no);
+        }else{             
+            
+            no = ((Capa)raiz.valor).getId();
+            
+            img.agregarCapa(imagenIn(raiz.izquierda));
+            img.agregarCapa(imagenIn(raiz.derecha));
+            img.agregarCapa(EDDProyectoF2.clienteActual.getCapas().buscar(no));                     
+        }
+        
+        return img;
     }
 }
