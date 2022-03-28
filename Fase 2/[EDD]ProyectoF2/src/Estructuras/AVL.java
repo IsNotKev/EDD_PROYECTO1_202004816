@@ -210,7 +210,6 @@ public class AVL {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(resultado);
             bw.close(); 
-            EDDProyectoF2.graficarDot(title);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -285,4 +284,27 @@ public class AVL {
         return raiz;
     }
     
+    public Lista top5(){
+        return top5_recursivo(raiz);
+    }
+    
+    public Lista top5_recursivo(Nodo raiz){
+        Lista res = new Lista();
+        
+        Imagen aux;
+        
+        if(raiz==null){
+            
+        }else if(raiz.izquierda==null && raiz.derecha==null){
+            aux = new Imagen(((Imagen)raiz.valor).getId(),((Imagen)raiz.valor).getCapas().contarCapas());
+            res.agregarOrdenado(aux);
+        }else{
+            aux = new Imagen(((Imagen)raiz.valor).getId(),((Imagen)raiz.valor).getCapas().contarCapas());
+            res.agregarOrdenado(aux);
+            res.agregarLista(top5_recursivo(raiz.izquierda));
+            res.agregarLista(top5_recursivo(raiz.derecha));
+        }
+        
+        return res;
+    }
 }

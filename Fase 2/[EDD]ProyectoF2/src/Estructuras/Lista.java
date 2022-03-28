@@ -6,6 +6,7 @@
 package Estructuras;
 
 import Objetos.Album;
+import Objetos.Imagen;
 import edd.proyectof2.EDDProyectoF2;
 import java.io.*;
 
@@ -19,10 +20,12 @@ public class Lista {
     public class Nodo{        
         Object info;
         Nodo next;
+        Nodo anterior;
 
         public Nodo(Object info) {
             this.info = info;
             this.next = null;
+            this.anterior = null;
         }       
     }
     
@@ -94,10 +97,119 @@ public class Lista {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(resultado);
             bw.close(); 
-            EDDProyectoF2.graficarDot(title);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
+    }
+    
+    public void eliminar(int i){
+        
+        raiz = eliminar_recursivo( i, raiz);
+    
+    }
+    
+    public Nodo eliminar_recursivo(int n, Nodo raiz){
+        Nodo auxLista = raiz;
+        while(auxLista != null){
+            Album miLista = (Album)auxLista.info;
+            
+            Lista imgs = miLista.getImgs();
+            
+            auxLista = auxLista.next;
+        }
+        return raiz;
+    }
+    
+    
+    public void agregarOrdenado(Imagen info){
+        Nodo nuevo = new Nodo(info);
+            //System.out.println(no);
+            if(raiz == null){
+                raiz =  nuevo;
+            }else{
+                ordenar(nuevo);
+            }
+    }
+    
+    public void ordenar(Nodo nodo){
+        Nodo aux = raiz;
+        Nodo temp = null;
+        while(aux != null){
+            temp = aux;
+            if(((Imagen)aux.info).getCant() > ((Imagen)nodo.info).getCant()){
+                aux = aux.next;
+            }else{
+                if(aux == raiz){
+                    nodo.next =aux;
+                    aux.anterior = nodo;                       
+                    raiz = nodo;
+                    return;
+                }else{
+                    nodo.anterior = aux.anterior;
+                    aux.anterior.next = nodo;
+                    nodo.next = aux;
+                    aux.anterior = nodo;
+                    return;
+                }
+            }       
+        }
+        
+        if(temp == raiz){
+            nodo.anterior = raiz;
+            raiz.next = nodo;              
+        }else{
+            temp.next = nodo;
+            nodo.anterior = temp;
+        }  
+    }
+    
+    public void agregarLista(Lista l){
+        if(l!=null){
+            Nodo aux = l.raiz;
+
+            while(aux!=null){
+                this.agregarOrdenado((Imagen)aux.info);
+                aux = aux.next;
+            }
+        }       
+    }
+    
+    public void graficarTop(String title){
+        String resultado="digraph G{\nN0[shape=record,label=\"{Top|1|2|3|4|5}";              
+        String names = "{No. Capa";
+        String cants = "{Cantidad";
+        
+        Nodo aux = raiz;
+        for(int i = 0; i<5; i++){
+            if(aux!=null){
+                names += "|Capa "+ ((Imagen)aux.info).getId();
+                cants += "|"+((Imagen)aux.info).getCant() + " imagenes";
+                aux = aux.next;
+            }else{
+                names += "|";
+                cants += "|";
+            }
+        }
+        
+        names += "}";
+        cants += "}";
+        
+        resultado += "|" + names + "|" + cants + "\"];";
+        
+        resultado += "\n}";
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        EDDProyectoF2.cont = 0;
     }
 }

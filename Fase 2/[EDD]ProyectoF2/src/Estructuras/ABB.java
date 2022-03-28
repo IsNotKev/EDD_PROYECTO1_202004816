@@ -233,4 +233,168 @@ public class ABB {
         
         return img;
     }
+    
+    public void generarTablaCapasHojas(String title){
+        String resultado="digraph G{\nN0[shape=record, label=\"{CAPAS HOJAS"+hojas(raiz)+"}\"];\n}";              
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        EDDProyectoF2.cont = 0;
+    }
+    
+    public String hojas(Nodo raiz){
+        String res = "";
+        
+        if(raiz == null){
+            res = "";
+        }else if(raiz.derecha == null &&  raiz.izquierda == null){
+            res = "|Capa "+((Capa)raiz.valor).getId();
+        }else{
+            res = hojas(raiz.derecha) + hojas(raiz.izquierda);
+        }
+        
+        return res;
+    }
+    
+    public void generarProfundidad(String title){
+        String resultado="digraph G{\nN0[shape=record, label=\"{PROFUNDIDAD|"+profundidad(raiz)+" Niveles}\"];\n}";              
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        EDDProyectoF2.cont = 0;
+    }
+    
+    public int profundidad(Nodo raiz){
+        int res = 0;
+        if(raiz == null){
+            res = 0;
+        }else if(raiz.derecha == null &&  raiz.izquierda == null){
+            res = 1;
+        }else{
+            int d = profundidad(raiz.derecha);
+            int i = profundidad(raiz.izquierda);
+            
+            if(d>i){
+                res = d +1;
+            }else{
+                res = i +1;
+            }
+        }
+        return res;
+    }
+    
+    public void graficarRecorridos(String title){
+        String resultado="digraph G{\nN0[shape=record, label=\"{ | PreOrden | InOrden | PostOrden }|{RECORRIDO|"+preorden(raiz, true)+"|"+inorden(raiz, true)+"|"+postorden(raiz, true)+"}\"];\n}";              
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        EDDProyectoF2.cont = 0;
+    }
+    
+    public String preorden(Nodo raiz, boolean primero){
+        String res = "";
+        
+        if(raiz == null){
+            res = "";
+        }else if(raiz.izquierda==null && raiz.derecha == null){
+            if(!primero){
+                res += ",";
+            }
+            res += +((Capa)raiz.valor).getId();
+        }else{
+            if(!primero){
+                res += ",";
+            }
+            res += ((Capa)raiz.valor).getId();
+            res += preorden(raiz.izquierda,false);
+            res += preorden(raiz.derecha,false);
+        }
+        
+        return res;
+    }
+    
+    public String inorden(Nodo raiz, boolean primero){
+        String res = "";
+        
+        if(raiz == null){
+            res = "";
+        }else if(raiz.izquierda==null && raiz.derecha == null){
+            if(!primero){
+                res += ",";
+            }
+            res += +((Capa)raiz.valor).getId();
+        }else{
+            res += inorden(raiz.izquierda,primero);
+            res += ","+((Capa)raiz.valor).getId();           
+            res += inorden(raiz.derecha,false);
+        }
+        
+        return res;
+    }
+    
+    public String postorden(Nodo raiz, boolean primero){
+        String res = "";
+        
+        if(raiz == null){
+            res = "";
+        }else if(raiz.izquierda==null && raiz.derecha == null){
+            if(!primero){
+                res += ",";
+            }
+            res += +((Capa)raiz.valor).getId();
+        }else{
+            res += postorden(raiz.izquierda,primero);                     
+            res += postorden(raiz.derecha,false);
+            res += ","+((Capa)raiz.valor).getId(); 
+        }
+        
+        return res;
+    }
+    
+    public int contarCapas(){
+        return contar(raiz);
+    }
+    
+    public int contar(Nodo raiz){
+        int n = 0;
+        
+        if(raiz == null){
+            n= 0;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            n = 1;
+        }else{
+            n += contar(raiz.derecha) + contar(raiz.izquierda) + 1;
+        }       
+        return n;
+    }
 }

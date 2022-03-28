@@ -14,12 +14,19 @@ import Estructuras.ABB;
 public class Imagen {
     int id;
     ABB capas;
-
+    int cant;
+    
     public Imagen(int id, ABB capas) {
         this.id = id;
         this.capas = capas;
     }
 
+    public Imagen(int id, int cant) {
+        this.id = id;
+        this.cant = cant;
+    }
+  
+    
     public int getId() {
         return id;
     }
@@ -34,6 +41,14 @@ public class Imagen {
 
     public void setCapas(ABB capas) {
         this.capas = capas;
+    }
+
+    public int getCant() {
+        return cant;
+    }
+
+    public void setCant(int cant) {
+        this.cant = cant;
     }
     
     

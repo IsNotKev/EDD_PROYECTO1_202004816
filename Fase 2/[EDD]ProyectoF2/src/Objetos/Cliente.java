@@ -134,4 +134,30 @@ public class Cliente {
         imgs.raiz = imgs.eliminar(n,imgs.raiz);
     }
     
+    public void generarArbolDeCapaDeImagen(int n){
+        ABB capas = imgs.buscar(n);
+        capas.graficar(dpi+"_ac_img"+n);
+        EDDProyectoF2.graficarDot(dpi+"_ac_img"+n);
+    }
+    
+    public void capasHojas(){
+        capas.generarTablaCapasHojas(dpi+"_capasHojas");
+        EDDProyectoF2.graficarDot(dpi+"_capasHojas");
+    }
+    
+    public void profundidad(){
+        capas.generarProfundidad(dpi+"_profundidad");
+        EDDProyectoF2.graficarDot(dpi+"_profundidad");
+    }
+    
+    public void recorridos(){
+        capas.graficarRecorridos(dpi+"_recorridos");
+        EDDProyectoF2.graficarDot(dpi+"_recorridos");      
+    }
+    
+    public void generarTop5(){
+        Lista t = imgs.top5();
+        t.graficarTop(dpi+"_top5");
+        EDDProyectoF2.graficarDot(dpi+"_top5");
+    }
 }
