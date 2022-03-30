@@ -88,7 +88,7 @@ public class Admin extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(255, 204, 102));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Modificar");
+        jButton4.setText("Actualizar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -225,7 +225,24 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        String no = JOptionPane.showInputDialog("Escriba el número de DPI.");
+        
+        try {
+            long dpi = Long.parseLong(no);
+            
+            Cliente cliente = EDDProyectoF2.clientes.buscar(dpi);
+            
+            if(cliente != null){
+                Modificar mod = new Modificar();
+                mod.llenar(dpi, cliente.getNombre(), cliente.getContra());
+                mod.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "DPI no encontrado.","Administrador",JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "DPI incorrecto.","Administrador",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
