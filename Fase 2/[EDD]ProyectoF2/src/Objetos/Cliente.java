@@ -160,4 +160,16 @@ public class Cliente {
         t.graficarTop(dpi+"_top5");
         EDDProyectoF2.graficarDot(dpi+"_top5");
     }
+    
+    public int contarImagenes(){
+        return imgs.contarImagenes();
+    }
+    
+    public int contarCapas(){
+        return capas.contarCapas();
+    }
+    
+    public int contarAlbumes(){
+        return albumes.tamano();
+    }
 }

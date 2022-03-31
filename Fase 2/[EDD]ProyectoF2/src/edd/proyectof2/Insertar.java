@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author kevin
  */
-public class Modificar extends javax.swing.JFrame {
+public class Insertar extends javax.swing.JFrame {
 
     /**
-     * Creates new form Modificar
+     * Creates new form Insertar
      */
-    public Modificar() {
+    public Insertar() {
         initComponents();
     }
 
@@ -36,11 +36,10 @@ public class Modificar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -52,7 +51,6 @@ public class Modificar extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,19 +64,19 @@ public class Modificar extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(204, 255, 255));
-        jButton1.setText("Actualizar");
+        jButton1.setText("Insertar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,23 +85,23 @@ public class Modificar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1)))
+                            .addComponent(jLabel1)
+                            .addComponent(jPasswordField1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
+                        .addGap(106, 106, 106)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,10 +112,10 @@ public class Modificar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,28 +134,30 @@ public class Modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTextField1.getText() != null && jTextField2.getText() != null && jTextField3.getText() != null ){
-            try {
-                String no = jTextField1.getText();
-                Long dpi = Long.parseLong(no);
-                String nombre = jTextField2.getText();
-                String contra = jTextField3.getText();
-                
-                Cliente actualizado = EDDProyectoF2.clientes.buscar(dpi);
-                
-                actualizado.setNombre(nombre);
-                actualizado.setContra(contra);
-                
-                EDDProyectoF2.clientes.actualizar(actualizado);
-                
-                JOptionPane.showMessageDialog(null, "Cliente Actualizado.","Actualizar",JOptionPane.INFORMATION_MESSAGE);
-                
-                dispose();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al actualizar.","Administrador",JOptionPane.ERROR_MESSAGE);
-            }
+        if(jTextField1.getText().equals("") || jTextField2.getText().equals("") || jPasswordField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Ingrese todos los datos.","Error",JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "Todos los campos deben de estar llenos.","Administrador",JOptionPane.ERROR_MESSAGE);
+            try {
+                long dpi = Long.parseLong(jTextField1.getText());
+                String nombre = jTextField2.getText();
+                String contra = jPasswordField1.getText();
+
+                Cliente nuevoCliente = new Cliente(dpi,nombre,contra);
+                
+                Cliente prueba = EDDProyectoF2.clientes.buscar(dpi);
+                
+                if(prueba==null){
+                    EDDProyectoF2.clientes.insertar(nuevoCliente);              
+                    JOptionPane.showMessageDialog(null,"Usuario creado exitosamente.","Usuario",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();               
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cliente Con Dpi: "+prueba.getDpi()+", Ya Existe.","Cliente",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"Ingrese datos correctos","Error",JOptionPane.ERROR_MESSAGE);
+            }                              
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -178,40 +178,32 @@ public class Modificar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Insertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Insertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Insertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Modificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Insertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modificar().setVisible(true);
+                new Insertar().setVisible(true);
             }
         });
     }
 
-    public void llenar(Long dpi, String nombre, String contra){
-        
-        jTextField1.setText(String.valueOf(dpi));
-        jTextField2.setText(nombre);
-        jTextField3.setText(contra);
-           
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

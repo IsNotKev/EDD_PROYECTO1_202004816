@@ -307,4 +307,21 @@ public class AVL {
         
         return res;
     }
+    
+    public int contarImagenes(){
+        return contar(raiz);
+    }
+    
+    public int contar(Nodo raiz){
+        int n = 0;
+        
+        if(raiz == null){
+            n= 0;
+        }else if(raiz.izquierda == null && raiz.derecha == null){
+            n = 1;
+        }else{
+            n += contar(raiz.derecha) + contar(raiz.izquierda) + 1;
+        }       
+        return n;
+    }
 }

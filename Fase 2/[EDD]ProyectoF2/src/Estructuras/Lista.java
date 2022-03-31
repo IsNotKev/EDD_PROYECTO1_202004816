@@ -177,14 +177,14 @@ public class Lista {
     
     public void graficarTop(String title){
         String resultado="digraph G{\nN0[shape=record,label=\"{Top|1|2|3|4|5}";              
-        String names = "{No. Capa";
+        String names = "{# Img";
         String cants = "{Cantidad";
         
         Nodo aux = raiz;
         for(int i = 0; i<5; i++){
             if(aux!=null){
-                names += "|Capa "+ ((Imagen)aux.info).getId();
-                cants += "|"+((Imagen)aux.info).getCant() + " imagenes";
+                names += "|Imagen "+ ((Imagen)aux.info).getId();
+                cants += "|"+((Imagen)aux.info).getCant() + " capas";
                 aux = aux.next;
             }else{
                 names += "|";
@@ -211,5 +211,16 @@ public class Lista {
         }
         
         EDDProyectoF2.cont = 0;
+    }
+    
+    public int tamano(){
+        Nodo aux = raiz;
+        int cont = 0;
+        while(aux!=null){
+            cont += 1;
+            aux = aux.next;
+        }
+        
+        return cont;
     }
 }
