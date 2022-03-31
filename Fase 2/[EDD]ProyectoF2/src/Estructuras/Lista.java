@@ -105,22 +105,37 @@ public class Lista {
     
     public void eliminar(int i){
         
-        raiz = eliminar_recursivo( i, raiz);
+        eliminar_recursivo(i);
     
     }
     
-    public Nodo eliminar_recursivo(int n, Nodo raiz){
+    public void eliminar_recursivo(int n){
         Nodo auxLista = raiz;
         while(auxLista != null){
             Album miLista = (Album)auxLista.info;
             
             Lista imgs = miLista.getImgs();
             
+            miLista.setImgs(imgs.eliminarImagen(n));
+            
             auxLista = auxLista.next;
         }
-        return raiz;
     }
     
+    public Lista eliminarImagen(int n){
+        Lista lista = new Lista();
+        
+        Nodo aux = raiz;
+        
+        while(aux!=null){
+            if((int)aux.info != n){
+                lista.add(aux.info);
+            }
+            aux = aux.next;
+        }
+                
+        return lista;
+    }
     
     public void agregarOrdenado(Imagen info){
         Nodo nuevo = new Nodo(info);

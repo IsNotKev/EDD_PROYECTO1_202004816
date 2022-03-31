@@ -132,6 +132,7 @@ public class Cliente {
     
     public void eliminarImagen(int n){
         imgs.raiz = imgs.eliminar(n,imgs.raiz);
+        albumes.eliminar(n);
     }
     
     public void generarArbolDeCapaDeImagen(int n){
