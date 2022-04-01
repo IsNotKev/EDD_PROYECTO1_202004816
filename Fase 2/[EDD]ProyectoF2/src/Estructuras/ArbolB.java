@@ -229,7 +229,7 @@ public class ArbolB {
     }
     
     public void graficar(String title){
-    String resultado="digraph G{\nlabel=\""+title+"\";\n";        
+        String resultado="digraph G{\nlabel=\""+title+"\";\n";        
        
         if(raiz.info1!=null){
             resultado += graficar_recursivo(raiz,"");
@@ -325,5 +325,130 @@ public class ArbolB {
                 JOptionPane.showMessageDialog(null, "Error Al Guardar Datos.","Cliente",JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
+    public void listarClientes(String title){
+        String resultado="digraph G{\n";        
+       
+        resultado += "N0[shape=record,label=\"{DPI"+dpis(raiz)+"}|{NOMBRE"+nombres(raiz)+"}|{CANT. IMAGENES"+cantimgs(raiz)+"}\"]";
+        
+        resultado+="\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\"+title+".txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            EDDProyectoF2.graficarDot(title);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public String cantimgs(Nodo raiz ){
+        String res = "";
+        
+        if(raiz.info1 != null){
+            res+= "|"+raiz.info1.contarImagenes();
+        }
+        if(raiz.info2 != null){
+            res+= "|"+raiz.info2.contarImagenes();
+        }
+        if(raiz.info3 != null){
+            res+= "|"+raiz.info3.contarImagenes();
+        }
+        if(raiz.info4 != null){
+            res+= "|"+raiz.info4.contarImagenes();
+        }
+       
+        if(raiz.n0!=null){
+            res += cantimgs(raiz.n0);
+        }
+        if(raiz.n1!=null){
+            res += cantimgs(raiz.n1);
+        }
+        if(raiz.n2!=null){
+            res += cantimgs(raiz.n2);
+        }
+        if(raiz.n3!=null){
+            res += cantimgs(raiz.n3);
+        }
+        if(raiz.n4!=null){
+            res += cantimgs(raiz.n4);
+        } 
+        
+        return res;
+    }
+    
+    public String dpis(Nodo raiz ){
+        String res = "";
+        
+        if(raiz.info1 != null){
+            res+= "|"+raiz.info1.getDpi();
+        }
+        if(raiz.info2 != null){
+            res+= "|"+raiz.info2.getDpi();
+        }
+        if(raiz.info3 != null){
+            res+= "|"+raiz.info3.getDpi();
+        }
+        if(raiz.info4 != null){
+            res+= "|"+raiz.info4.getDpi();
+        }
+       
+        if(raiz.n0!=null){
+            res += dpis(raiz.n0);
+        }
+        if(raiz.n1!=null){
+            res += dpis(raiz.n1);
+        }
+        if(raiz.n2!=null){
+            res += dpis(raiz.n2);
+        }
+        if(raiz.n3!=null){
+            res += dpis(raiz.n3);
+        }
+        if(raiz.n4!=null){
+            res += dpis(raiz.n4);
+        } 
+        
+        return res;
+    }
+    public String nombres(Nodo raiz ){
+        String res = "";
+        
+        if(raiz.info1 != null){
+            res+= "|"+raiz.info1.getNombre();
+        }
+        if(raiz.info2 != null){
+            res+= "|"+raiz.info2.getNombre();
+        }
+        if(raiz.info3 != null){
+            res+= "|"+raiz.info3.getNombre();
+        }
+        if(raiz.info4 != null){
+            res+= "|"+raiz.info4.getNombre();
+        }
+       
+        if(raiz.n0!=null){
+            res += nombres(raiz.n0);
+        }
+        if(raiz.n1!=null){
+            res += nombres(raiz.n1);
+        }
+        if(raiz.n2!=null){
+            res += nombres(raiz.n2);
+        }
+        if(raiz.n3!=null){
+            res += nombres(raiz.n3);
+        }
+        if(raiz.n4!=null){
+            res += nombres(raiz.n4);
+        } 
+        
+        return res;
     }
 }

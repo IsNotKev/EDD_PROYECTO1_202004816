@@ -367,12 +367,12 @@ public class Matriz {
         }
     }
     
-    public void graficarMatriz(String title){
-        String resultado="digraph G{\nlabel=\""+ title +"\" ;\nnode [shape=square];\n";        
+    public void graficarMatriz(String title, String recorrido){
+        String resultado="digraph G{\nlabel=\""+ recorrido +"\" ;\nnode [shape=square];\n";        
         String conexiones="";
         String nodos="";
         
-        nodos += "INICIO[shape=Msquare,label=\""+title+"\",group=0];\n";
+        nodos += "INICIO[shape=Msquare,label=\"\",group=0];\n";
         String rs = "rank = same {INICIO";
         int maxColumnas = horizontal.max();
         int maxFilas = vertical.max();

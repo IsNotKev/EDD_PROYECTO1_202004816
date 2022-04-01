@@ -16,7 +16,7 @@ import java.util.*;
  * @author kevin
  */
 public class ABB {
-    Nodo raiz;
+    public Nodo raiz;
     
     public static class Nodo{
         
