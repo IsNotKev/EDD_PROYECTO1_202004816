@@ -255,12 +255,15 @@ public class AVL {
     }
     
     public Imagen obtenerMayor(Nodo raiz){
-        if(raiz.derecha == null){
-            Imagen valor = (Imagen)raiz.valor;
-            return valor;
-        }else{
-            return obtenerMayor(raiz.derecha);
+        if(raiz != null){
+            if(raiz.derecha == null){
+                Imagen valor = (Imagen)raiz.valor;
+                return valor;
+            }else{
+                return obtenerMayor(raiz.derecha);
+            }
         }
+        return null;
     }
     
     public Nodo eliminar(int n, Nodo raiz){

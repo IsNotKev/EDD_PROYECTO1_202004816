@@ -24,11 +24,11 @@ public class EDDProyectoF2 {
         /*Login log = new Login();
         log.setVisible(true);*/
         
-        /*Usuario u = new Usuario();
-        u.setVisible(true); */
+        Usuario u = new Usuario();
+        u.setVisible(true); 
         
-        Admin ad = new Admin();
-        ad.setVisible(true);     
+        /*Admin ad = new Admin();
+        ad.setVisible(true); */    
         
     }
     

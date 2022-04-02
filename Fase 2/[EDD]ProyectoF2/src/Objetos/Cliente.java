@@ -35,6 +35,15 @@ public class Cliente {
         capas = new ABB();
         imgs = new AVL();
     }   
+
+    public AVL getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(AVL imgs) {
+        this.imgs = imgs;
+    }
+      
     
     public long getDpi() {
         return dpi;
