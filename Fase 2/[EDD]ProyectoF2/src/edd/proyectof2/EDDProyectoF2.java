@@ -21,11 +21,11 @@ public class EDDProyectoF2 {
     //public static Cliente clientePrueba = new Cliente(252525252,"Kevin","123");
     
     public static void main(String[] args) {
-        /*Login log = new Login();
-        log.setVisible(true);*/
+        Login log = new Login();
+        log.setVisible(true);
         
-        Usuario u = new Usuario();
-        u.setVisible(true); 
+        /*Usuario u = new Usuario();
+        u.setVisible(true);*/
         
         /*Admin ad = new Admin();
         ad.setVisible(true); */    

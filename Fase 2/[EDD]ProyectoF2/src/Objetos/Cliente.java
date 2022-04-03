@@ -182,4 +182,8 @@ public class Cliente {
     public int contarAlbumes(){
         return albumes.tamano();
     }
+    
+    public ABB buscarimg(int n){
+       return  imgs.buscar(n);
+    }
 }

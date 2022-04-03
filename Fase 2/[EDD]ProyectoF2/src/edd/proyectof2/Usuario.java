@@ -160,19 +160,19 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Imagen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jRadioButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 204));
         jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("PreOrden");
 
-        jRadioButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 204));
         jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("InOrden");
 
-        jRadioButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton3.setBackground(new java.awt.Color(255, 255, 204));
         jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton3.setText("PostOrden");
 
@@ -223,9 +223,9 @@ public class Usuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
-                        .addGap(42, 42, 42)
-                        .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton2)
+                        .addGap(50, 50, 50)
                         .addComponent(jRadioButton3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 10, Short.MAX_VALUE)
@@ -265,7 +265,7 @@ public class Usuario extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Capa:");
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reportes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jButton12.setBackground(new java.awt.Color(204, 204, 255));
@@ -297,7 +297,7 @@ public class Usuario extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(204, 204, 255));
         jButton15.setForeground(new java.awt.Color(0, 0, 0));
-        jButton15.setText("Top 5");
+        jButton15.setText("Top 5 Imagenes");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -309,9 +309,9 @@ public class Usuario extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(51, 51, 51)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,10 +324,10 @@ public class Usuario extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -384,7 +384,7 @@ public class Usuario extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton16))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -400,12 +400,12 @@ public class Usuario extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton6))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -538,15 +538,19 @@ public class Usuario extends javax.swing.JFrame {
             String a = (String)jComboBox2.getSelectedItem();
             int no = Integer.parseInt(a);
             String nombre;
+            ABB arbol = EDDProyectoF2.clienteActual.buscarimg(no);
             if(jRadioButton1.isSelected()){
                 //EDDProyectoF2.clienteActual.generarImagen(no, "Pre");
-                nombre = EDDProyectoF2.clienteActual.getDpi()+"_pre_img"+no;
+                nombre = EDDProyectoF2.clienteActual.getDpi()+"_pre_img"+no;               
+                JOptionPane.showMessageDialog(null, "PreOrden: " + arbol.preorden(arbol.raiz, true),"Imagen " + no,JOptionPane.INFORMATION_MESSAGE);
             }else if(jRadioButton2.isSelected()){
                 //EDDProyectoF2.clienteActual.generarImagen(no, "In");
                 nombre = EDDProyectoF2.clienteActual.getDpi()+"_in_img"+no;
+                JOptionPane.showMessageDialog(null, "InOrden: " + arbol.inorden(arbol.raiz, true),"Imagen " + no,JOptionPane.INFORMATION_MESSAGE);
             }else{
                 //EDDProyectoF2.clienteActual.generarImagen(no, "Post");
                 nombre = EDDProyectoF2.clienteActual.getDpi()+"_post_img"+no;
+                JOptionPane.showMessageDialog(null, "PostOrden: " + arbol.postorden(arbol.raiz, true),"Imagen " + no,JOptionPane.INFORMATION_MESSAGE);
             }
 
             ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\"+nombre+".png");
@@ -705,9 +709,9 @@ public class Usuario extends javax.swing.JFrame {
             post.graficarMatriz(dpi+"_post_img"+id, "PostOrden: "+capas.postorden(capas.raiz, true));
             EDDProyectoF2.graficarDot(dpi+"_post_img"+id);
             jComboBox2.addItem(""+id);
-            
+            JOptionPane.showMessageDialog(null, "Imagen Creada.", "Cliente",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error Al Cargar ", "Cliente",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error Al Crear Imagen.", "Cliente",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton17ActionPerformed
 
