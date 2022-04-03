@@ -38,18 +38,6 @@ public class AVL {
     public AVL() {
         this.raiz = null;
     }
-    
-    /*public Nodo buscar(int d, Nodo r){
-    if(raiz==null){
-        return null;
-    }else if(r.dato==d){
-        return r;
-    }else if(r.dato<d){
-        return buscar(d, r.hijoDerecho);
-    }else{
-        return buscar(d, r.hijoIzquierdo);
-    }
-    }*/
 
    //obtener factor de equilibrio
     public int obtenerFE(Nodo x){
