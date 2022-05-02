@@ -5,17 +5,19 @@
  */
 package edd.proyectof3;
 
+import Estructuras.*;
+
 /**
  *
  * @author kevin
  */
 public class EDDProyectoF3 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static Lista lugares = new Lista();
+    public static Lista rutas = new Lista();
     public static void main(String[] args) {
-        // TODO code application logic here
+        LogIn l = new LogIn();
+        l.setVisible(true);
     }
     
 }
