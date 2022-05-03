@@ -13,10 +13,20 @@ public class Mensajero {
     long dpi;
     String nombre;
     String apellido;
-    char tipo_licencia;
+    String tipo_licencia;
     String genero;
-    int telefono;
+    String telefono;
     String direccion;
+
+    public Mensajero(long dpi, String nombre, String apellido, String tipo_licencia, String genero, String telefono, String direccion) {
+        this.dpi = dpi;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipo_licencia = tipo_licencia;
+        this.genero = genero;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
 
     public long getDpi() {
         return dpi;
@@ -42,11 +52,11 @@ public class Mensajero {
         this.apellido = apellido;
     }
 
-    public char getTipo_licencia() {
+    public String getTipo_licencia() {
         return tipo_licencia;
     }
 
-    public void setTipo_licencia(char tipo_licencia) {
+    public void setTipo_licencia(String tipo_licencia) {
         this.tipo_licencia = tipo_licencia;
     }
 
@@ -58,11 +68,11 @@ public class Mensajero {
         this.genero = genero;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

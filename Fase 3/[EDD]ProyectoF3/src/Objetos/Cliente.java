@@ -16,10 +16,21 @@ public class Cliente {
     String usuario;
     String correo;
     String contra;
-    int telefono;
+    String telefono;
     String direccion;
     int id_municipio;
 
+    public Cliente(long dpi, String nombre, String usuario, String correo, String contra, String telefono, String direccion, int id_municipio) {
+        this.dpi = dpi;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.contra = contra;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.id_municipio = id_municipio;
+    }
+    
     public long getDpi() {
         return dpi;
     }
@@ -60,11 +71,11 @@ public class Cliente {
         this.contra = contra;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

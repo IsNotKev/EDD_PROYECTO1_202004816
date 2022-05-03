@@ -167,7 +167,13 @@ public class LogIn extends javax.swing.JFrame {
         String usuario = jTextField1.getText();
         String contra = jPasswordField1.getText();
 
+        if(usuario.equals("admin") && contra.equals("123")){
+            Admin a = new Admin();
+            a.setVisible(true);
+            dispose();
+        }else{
         
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

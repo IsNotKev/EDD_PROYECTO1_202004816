@@ -13,8 +13,15 @@ public class Lugar {
     int id;
     String departamento;
     String nombre;
-    boolean sn_sucursal;
+    String sn_sucursal;
 
+    public Lugar(int id, String departamento, String nombre, String sn_sucursal) {
+        this.id = id;
+        this.departamento = departamento;
+        this.nombre = nombre;
+        this.sn_sucursal = sn_sucursal;
+    }
+    
     public int getId() {
         return id;
     }
@@ -39,13 +46,19 @@ public class Lugar {
         this.nombre = nombre;
     }
 
-    public boolean isSn_sucursal() {
+    public String isSn_sucursal() {
         return sn_sucursal;
     }
 
-    public void setSn_sucursal(boolean sn_sucursal) {
+    public void setSn_sucursal(String sn_sucursal) {
         this.sn_sucursal = sn_sucursal;
     }
     
-    
+    public void imprimir(){
+        System.out.println("-----------------");
+        System.out.println("id: " + id);
+        System.out.println("dep: " + departamento);
+        System.out.println("name: " + nombre);
+        System.out.println("sucursal: " + sn_sucursal);
+    }
 }
