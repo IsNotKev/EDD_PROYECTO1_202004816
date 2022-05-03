@@ -16,6 +16,7 @@ public class EDDProyectoF3 {
     public static Lista lugares = new Lista();
     public static Lista rutas = new Lista();
     public static Lista clientes = new Lista();
+    public static ListaAdyacencia milista = new ListaAdyacencia();
     
     public static void main(String[] args) {
         /*LogIn l = new LogIn();
