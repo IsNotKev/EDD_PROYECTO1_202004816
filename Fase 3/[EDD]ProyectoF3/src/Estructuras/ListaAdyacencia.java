@@ -7,6 +7,7 @@ package Estructuras;
 
 import Estructuras.Lista.Nodo;
 import Objetos.*;
+import edd.proyectof3.EDDProyectoF3;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -102,16 +103,28 @@ public class ListaAdyacencia {
     }
     
     public void graficar(){
-        String resultado="digraph G{\nlabel=\"Lista De Adyacencia\";\n";        
-        resultado += "\nL0[node=record,label=\"";
+        String resultado="digraph G{\nlabel=\"Lista De Adyacencia\";\nnode[shape=square];\nrankdir=\"LR\";\n";        
+        String nodos = "";
+        String conexiones = "";
         Nodo aux = vertices.raiz;    
-        String ex = "{";
         while(aux!=null){
             Vertice nv = (Vertice)aux.info;
+            nodos += "N"+aux.hashCode()+"[label=\""+nv.vert+"\",style=\"filled\", fillcolor=\"#A4EEFB\"];\n";
+            String anterior = "N"+aux.hashCode();
+            
+            Nodo destino = nv.destinos.raiz;
+            
+            while(destino!=null){
+                nodos += "\nN"+destino.hashCode()+"[label=\""+((Destino)destino.info).des+"\"];";   
+                conexiones += anterior + "->N"+destino.hashCode()+ ";\n";   
+                anterior = "N"+destino.hashCode();
+                destino = destino.next;
+            }
+            
             aux = aux.next;
         }
         
-        resultado += "|"+ex+"}\"];";
+        resultado += nodos + conexiones;
         
         resultado+="\n}";
         
@@ -123,6 +136,7 @@ public class ListaAdyacencia {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(resultado);
             bw.close(); 
+            EDDProyectoF3.graficarDot("adyacencia");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,9 +10,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -341,7 +344,13 @@ public class Admin extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if(EDDProyectoF3.rutas.tamano() != 0){
             EDDProyectoF3.milista.generar(EDDProyectoF3.rutas);
-            EDDProyectoF3.milista.imprimir();
+            //EDDProyectoF3.milista.imprimir();
+            EDDProyectoF3.milista.graficar();
+            
+            ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\adyacencia.png");
+            Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel2.getWidth(),jLabel2.getHeight(), Image.SCALE_SMOOTH);
+            Icon iconoEscalado = new ImageIcon(imgEscalada);
+            jLabel2.setIcon(iconoEscalado);
         }else{
             JOptionPane.showMessageDialog(null, "No hay rutas.","Administrador",JOptionPane.ERROR_MESSAGE);
         }
