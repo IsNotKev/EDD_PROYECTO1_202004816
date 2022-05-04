@@ -62,8 +62,8 @@ public class EDDProyectoF3 {
     public static void agregarMensajeroRecursivo(Mensajero nuevo, int i){
         long dpi = nuevo.getDpi();
         int tamano = mensajeros.size();
-        int pos = Math.toIntExact((dpi%tamano+1)*i);
-        
+        int pos = Math.toIntExact((dpi%7+1)*i);
+
         if(pos<=tamano-1){
             Mensajero p = mensajeros.get(pos);
             if(p==null){
