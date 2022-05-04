@@ -7,6 +7,7 @@ package edd.proyectof3;
 
 import Estructuras.ListaAdyacencia;
 import Objetos.*;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -378,7 +379,11 @@ public class Admin extends javax.swing.JFrame {
             EDDProyectoF3.milista.generar(EDDProyectoF3.rutas);
             //EDDProyectoF3.milista.imprimir();
             EDDProyectoF3.milista.graficar();
-            
+            try {
+               Thread.sleep(2*1000);
+            } catch (Exception e) {
+               System.out.println(e);
+            }
             ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\adyacencia.png");
             Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel2.getWidth(),jLabel2.getHeight(), Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -390,7 +395,12 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         if(EDDProyectoF3.rutas.tamano() != 0){
-            EDDProyectoF3.rutas.graficarGrafo();      
+            EDDProyectoF3.rutas.graficarGrafo();   
+            try {
+               Thread.sleep(2*1000);
+            } catch (Exception e) {
+               System.out.println(e);
+            }
             ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\grafo.png");
             Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel2.getWidth(),jLabel2.getHeight(), Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -401,7 +411,12 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        EDDProyectoF3.graficarMensajeros();      
+        EDDProyectoF3.graficarMensajeros();     
+        try {
+           Thread.sleep(2*1000);
+        } catch (Exception e) {
+           System.out.println(e);
+        }
         ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\mensajeros.png");
         Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel2.getWidth(),jLabel2.getHeight(), Image.SCALE_SMOOTH);
         Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -455,7 +470,6 @@ public class Admin extends javax.swing.JFrame {
             String dep = objeto.get("departamento").getAsString();
             String nombre = objeto.get("nombre").getAsString();
             String sucursal = objeto.get("sn_sucursal").getAsString();
-            
             Lugar nlugar = new Lugar(id,dep,nombre,sucursal);
             EDDProyectoF3.lugares.add(nlugar);
         }
@@ -494,7 +508,9 @@ public class Admin extends javax.swing.JFrame {
             String dir = gsonObj.get("direccion").getAsString();  
             int id_mun = gsonObj.get("id_municipio").getAsInt();  
 
-            Cliente nc = new Cliente(dpi,nombre,usuario,correo, contra, tel, dir, id_mun);
+            String password = BCrypt.withDefaults().hashToString(12, contra.toCharArray());
+            
+            Cliente nc = new Cliente(dpi,nombre,usuario,correo, password, tel, dir, id_mun);
             
             EDDProyectoF3.clientes.add(nc);
         }

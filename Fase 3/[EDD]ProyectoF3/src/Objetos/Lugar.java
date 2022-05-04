@@ -46,7 +46,7 @@ public class Lugar {
         this.nombre = nombre;
     }
 
-    public String isSn_sucursal() {
+    public String getSn_sucursal() {
         return sn_sucursal;
     }
 

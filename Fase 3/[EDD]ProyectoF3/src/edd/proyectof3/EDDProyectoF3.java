@@ -7,9 +7,12 @@ package edd.proyectof3;
 
 import Estructuras.*;
 import Objetos.*;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 /**
@@ -32,17 +35,30 @@ public class EDDProyectoF3 {
             mensajeros.add(null);
         }
         
-        /*LogIn l = new LogIn();
-        l.setVisible(true);*/
+        /*String password = "1234";
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        // $2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6
+
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
+        // result.verified == true
         
-        Admin a = new Admin();
-        a.setVisible(true);
+        System.out.println(bcryptHashString);
+        System.out.println(result);*/
+        
+        LogIn l = new LogIn();
+        l.setVisible(true);
+        
+        /*Admin a = new Admin();
+        a.setVisible(true);*/
+        
+        /*Usuario us = new Usuario();
+        us.setVisible(true);*/
     }
     
     public static void agregarMensajero(Mensajero nuevo){
         long dpi = nuevo.getDpi(); 
         
-        //verificarTamano();
+        verificarTamano();
         
         int tamano = mensajeros.size();
         int pos = Math.toIntExact(dpi%tamano);
@@ -51,6 +67,7 @@ public class EDDProyectoF3 {
             Mensajero p = mensajeros.get(pos);
             if(p==null){
                 mensajeros.set(pos, nuevo);
+                //System.out.println(pos + " : Libre");
             }else{
                 agregarMensajeroRecursivo(nuevo,1);
             }
@@ -63,14 +80,17 @@ public class EDDProyectoF3 {
         long dpi = nuevo.getDpi();
         int tamano = mensajeros.size();
         int pos = Math.toIntExact((dpi%7+1)*i);
-
         if(pos<=tamano-1){
             Mensajero p = mensajeros.get(pos);
             if(p==null){
                 mensajeros.set(pos, nuevo);
+                //System.out.println(pos + " : Libre");
             }else{
-                agregarMensajeroRecursivo(nuevo,i+1);
+                //System.out.println(pos + ": Ocupado");
+                agregarMensajeroRecursivo(nuevo,i+1);               
             }
+        }else{
+            System.out.println("Error");
         }   
     }
     
@@ -84,17 +104,17 @@ public class EDDProyectoF3 {
                 cant += 1;
             }
         }
-        
+        //System.out.println(cant+","+porcentaje+","+tamano);
         if(cant>=porcentaje){
-            int nuevaCant = cant +1;
+            int nuevaCant = tamano +1;
             while (!esPrimo(nuevaCant)) {                
                 nuevaCant += 1;
             }
-            int mas = nuevaCant-cant;
+            int mas = nuevaCant-tamano;
             for(int j=0;j<mas;j++){
                 mensajeros.add(null);
             }
-            System.out.println("Se actualizo tamano a " + nuevaCant);
+            //System.out.println("Se actualizo tamano a " + nuevaCant);
         }
         
     } 
@@ -170,4 +190,24 @@ public class EDDProyectoF3 {
            e.printStackTrace();
        }
     }
+    
+    public static String convertirSHA256(String password) {
+	MessageDigest md = null;
+	try {
+		md = MessageDigest.getInstance("SHA-256");
+	} 
+	catch (NoSuchAlgorithmException e) {		
+		e.printStackTrace();
+		return null;
+	}
+	    
+	byte[] hash = md.digest(password.getBytes());
+	StringBuffer sb = new StringBuffer();
+	    
+	for(byte b : hash) {        
+		sb.append(String.format("%02x", b));
+	}
+	    
+	return sb.toString();
+}
 }

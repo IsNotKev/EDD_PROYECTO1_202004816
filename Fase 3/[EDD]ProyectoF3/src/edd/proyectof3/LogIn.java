@@ -6,6 +6,7 @@
 package edd.proyectof3;
 
 import Objetos.Cliente;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import javax.swing.JOptionPane;
 
 /**
@@ -181,12 +182,20 @@ public class LogIn extends javax.swing.JFrame {
                 String us = n.getUsuario();
                 if(usuario.equals(us)){
                     String c = n.getContra();
-                    if(contra.equals(c)){
+                    BCrypt.Result result = BCrypt.verifyer().verify(contra.toCharArray(), c);
+                    if(result.verified){
                         Usuario nusuario = new Usuario();
                         nusuario.setVisible(true);
+                        
+                        for(int j= 0; j<EDDProyectoF3.lugares.size();j++){
+                            if((EDDProyectoF3.lugares.get(j)).getSn_sucursal().equals("si")){
+                                nusuario.jComboBox1.addItem((EDDProyectoF3.lugares.get(j)).getNombre());
+                            }
+                        }
+                                              
                         encontrado = true;                      
                         dispose();
-                        JOptionPane.showMessageDialog(null, "Bienvenid@" + n.getNombre(),"Usuario",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Bienvenid@ " + n.getNombre(),"Usuario",JOptionPane.INFORMATION_MESSAGE);
                     }
                     break;
                 }
