@@ -18,11 +18,13 @@ import java.util.ArrayList;
  */
 public class EDDProyectoF3 {
 
-    public static Lista lugares = new Lista();
+    public static ArrayList<Lugar> lugares = new ArrayList<Lugar>();
     public static Lista rutas = new Lista();
-    public static Lista clientes = new Lista();
+    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     public static ListaAdyacencia milista = new ListaAdyacencia();
     public static ArrayList<Mensajero> mensajeros = new ArrayList<Mensajero>();
+    
+    public static Cliente actual;
     
     public static void main(String[] args) {
         

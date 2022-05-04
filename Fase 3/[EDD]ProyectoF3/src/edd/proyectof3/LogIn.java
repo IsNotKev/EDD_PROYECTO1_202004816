@@ -5,6 +5,9 @@
  */
 package edd.proyectof3;
 
+import Objetos.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kevin
@@ -172,7 +175,25 @@ public class LogIn extends javax.swing.JFrame {
             a.setVisible(true);
             dispose();
         }else{
-        
+            boolean encontrado = false;
+            for(int i=0;i<EDDProyectoF3.clientes.size();i++){
+                Cliente n = EDDProyectoF3.clientes.get(i);
+                String us = n.getUsuario();
+                if(usuario.equals(us)){
+                    String c = n.getContra();
+                    if(contra.equals(c)){
+                        Usuario nusuario = new Usuario();
+                        nusuario.setVisible(true);
+                        encontrado = true;                      
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Bienvenid@" + n.getNombre(),"Usuario",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    break;
+                }
+            }
+            if(!encontrado){
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña Incorrecta","LogIn",JOptionPane.ERROR_MESSAGE);
+            }         
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
