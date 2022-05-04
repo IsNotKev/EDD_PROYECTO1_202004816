@@ -109,6 +109,38 @@ public class EDDProyectoF3 {
         return true;
     }
     
+    public static void graficarMensajeros(){
+        String resultado="digraph G{\nlabel=\"Mensajeros\";\n";        
+        
+        resultado += "N0[shape=record,label=\"{";
+        
+        for (int i = 0; i < mensajeros.size(); i++) {
+            Mensajero a = mensajeros.get(i);
+            if(a!=null){
+                resultado += a.getDpi() + "|";
+            }else{
+                resultado += "-"+i + "-|";
+            }         
+        }
+        
+        resultado = resultado.substring(0, resultado.length()-1);
+        
+        resultado+="}\"];\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\mensajeros.txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            graficarDot("mensajeros");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void graficarDot(String title){
        try {
            

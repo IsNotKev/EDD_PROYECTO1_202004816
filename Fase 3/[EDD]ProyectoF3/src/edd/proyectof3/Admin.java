@@ -401,7 +401,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        //EDDProyectoF3.graficarMensajeros();      
+        EDDProyectoF3.graficarMensajeros();      
         ImageIcon imgIcon = new ImageIcon(System.getProperty("user.dir") + "\\mensajeros.png");
         Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel2.getWidth(),jLabel2.getHeight(), Image.SCALE_SMOOTH);
         Icon iconoEscalado = new ImageIcon(imgEscalada);
