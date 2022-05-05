@@ -5,6 +5,7 @@
  */
 package Estructuras;
 
+import Objetos.Entregas;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edd.proyectof3.EDDProyectoF3;
@@ -12,6 +13,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,18 +33,19 @@ public class BlockChein {
         int index;
         String timestamp;    
         int nonce;
-        //DATA 
+        ArrayList<Entregas> entregas; 
         String previusHash;
         String rootMerkle;
         String hash; 
 
-        public Bloque(int index, String timestamp,String previusH, int nonce, String rootMerkle, String hash) {
+        public Bloque(int index, String timestamp,String previusH, int nonce, String rootMerkle, String hash ,ArrayList<Entregas> entregas ) {
             this.index = index;
             this.timestamp = timestamp;
             this.nonce = nonce;
             this.previusHash = previusH;
             this.rootMerkle = rootMerkle;
             this.hash = hash;
+            this.entregas = entregas;
         }  
         
         public void imprimir(){
@@ -131,11 +134,19 @@ public class BlockChein {
             }
         }
         
-        Bloque n = new Bloque(index,hora,previusH,nonce,rooth,hash);
-        agregar(n);
-        EDDProyectoF3.arbol = new AMerckle();
+        ArrayList<Entregas> et = EDDProyectoF3.entregas;
         
+        //AGREGANDO NUEVO BLOQUE
+        Bloque n = new Bloque(index,hora,previusH,nonce,rooth,hash,et);
+        agregar(n);
+        
+        //REINICIANDO ESTRUCTURAS
+        EDDProyectoF3.arbol = new AMerckle();
+        EDDProyectoF3.entregas = new ArrayList<Entregas>();
+        
+        //GENERANDO JSON
         generarJson(n);
+        
         index++;
     }
     
@@ -148,7 +159,7 @@ public class BlockChein {
         PrintWriter pw = null;
         try
         {
-            String ruta = System.getProperty("user.dir") + "\\Bloques\\"+n.index+".json";
+            String ruta = System.getProperty("user.dir") + "\\blockchain\\Bloques\\"+n.index+".json";
             fichero = new FileWriter(ruta);
             pw = new PrintWriter(fichero);
 

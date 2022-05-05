@@ -5,6 +5,7 @@
  */
 package edd.proyectof3;
 
+import Objetos.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -153,8 +154,7 @@ public class Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println(dtf.format(LocalDateTime.now()));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yy::HH:mm:ss");
         if(jComboBox1.getSelectedItem() == null || jComboBox2.getSelectedItem() == null){
             JOptionPane.showMessageDialog(null, "No Suficientes Datos.","Cliente",JOptionPane.ERROR_MESSAGE);
         }else{
@@ -162,10 +162,46 @@ public class Usuario extends javax.swing.JFrame {
             String sucursal = jComboBox1.getSelectedItem()+"";
             String mensajero = jComboBox2.getSelectedItem()+"";
             
-            String solicitud = sucursal+" , "+dtf.format(LocalDateTime.now())+" , "+EDDProyectoF3.actual.getId_municipio() + " , " + EDDProyectoF3.actual.getDpi();
-            solicitud += " , " + mensajero + " , ruta";
+            String[] ids = sucursal.split("\\.");         
+            String[] idm = mensajero.split("-");
             
+            int idsuc = Integer.parseInt(ids[0]);
+            long dpim = Long.parseLong(idm[1].substring(1));
+            
+            String sede = "";
+            for(Lugar lug :EDDProyectoF3.lugares){
+                if(lug.getId() == idsuc){
+                    sede = lug.getNombre() + ", " + lug.getDepartamento();
+                }
+            }
+             
+            String men = "";
+            for (Mensajero mm : EDDProyectoF3.mensajeros) {
+                if(mm!=null){
+                   if(mm.getDpi()==dpim){
+                        men = mm.getNombre() + mm.getApellido();
+                        mm.entregar();
+                    } 
+                }          
+            }
+            String hora = dtf.format(LocalDateTime.now());
+            //AGREGANDO ARBOL MERCKLE
+            String solicitud = sede+EDDProyectoF3.actual.getDireccion()+hora+EDDProyectoF3.actual.getNombre()+men;
             EDDProyectoF3.arbol.agregar(solicitud);
+            //AGREGANDO DATA 
+            Entregas nentrega = new Entregas(sede,EDDProyectoF3.actual.getDireccion(),hora,EDDProyectoF3.actual.getNombre(),men);
+            EDDProyectoF3.entregas.add(nentrega);
+            
+            //ACTUALIZAR SOLICITUDES
+            for(Cliente cliente :EDDProyectoF3.clientes){
+                if(cliente.getDpi()==EDDProyectoF3.actual.getDpi()){
+                    cliente.solicitar();
+                    EDDProyectoF3.actual = cliente;
+                    break;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Solicitud realizada correctamente","Cliente",JOptionPane.INFORMATION_MESSAGE);
+            //System.out.println(EDDProyectoF3.actual.getSolicitudes());            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

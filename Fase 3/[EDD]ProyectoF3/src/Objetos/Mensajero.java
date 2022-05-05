@@ -32,6 +32,10 @@ public class Mensajero {
     public void entregar(){
         entregas += 1;
     }
+
+    public int getEntregas() {
+        return entregas;
+    }
     
     public long getDpi() {
         return dpi;

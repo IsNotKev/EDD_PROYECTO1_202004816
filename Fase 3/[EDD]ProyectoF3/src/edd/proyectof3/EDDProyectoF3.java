@@ -26,11 +26,13 @@ import javax.swing.Timer;
  */
 public class EDDProyectoF3 {
 
-    public static ArrayList<Lugar> lugares = new ArrayList<Lugar>();
     public static Lista rutas = new Lista();
-    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     public static ListaAdyacencia milista = new ListaAdyacencia();
+    public static ArrayList<Lugar> lugares = new ArrayList<Lugar>();
+    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();  
     public static ArrayList<Mensajero> mensajeros = new ArrayList<Mensajero>();
+    
+    public static ArrayList<Entregas> entregas = new ArrayList<Entregas>();  
     
     public static Cliente actual;
     
@@ -71,8 +73,10 @@ public class EDDProyectoF3 {
         arbol.agregar("Hola8");
         arbol.agregar("Hola9");
         arbol.generarArbol();
-        System.out.println(arbol.getMerkleRoot());*/   
-        /*blockchein.crearBloque();
+        System.out.println(arbol.getMerkleRoot());*/ 
+        /*entregas.add(new Entregas("sede1","mi casa","hoy","yo","juanito"));
+        blockchein.crearBloque();
+        blockchein.crearBloque();
         blockchein.crearBloque();*/
         //blockchein.imprimir();
         
@@ -162,7 +166,7 @@ public class EDDProyectoF3 {
         for (int i = 0; i < mensajeros.size(); i++) {
             Mensajero a = mensajeros.get(i);
             if(a!=null){
-                resultado += "DPI:"+a.getDpi()+"\\nNOMBRE: " + a.getNombre() + "\\nAPELLIDO: "+ a.getApellido() + "|";
+                resultado += "DPI:"+a.getDpi()+"\\nNOMBRE: " + a.getNombre() + "\\nAPELLIDO: "+ a.getApellido() +"\\nENTREGAS: " + a.getEntregas() +"|";
             }else{
                 resultado += "-"+i + "-|";
             }         

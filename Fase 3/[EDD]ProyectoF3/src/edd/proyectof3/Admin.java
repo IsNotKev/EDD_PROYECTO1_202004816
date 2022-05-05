@@ -282,6 +282,7 @@ public class Admin extends javax.swing.JFrame {
             
             //System.out.println(t);
             generarLugares(t);
+            JOptionPane.showMessageDialog(null, "Lugares agregados correctamente.","Administradoe",JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {
@@ -315,7 +316,8 @@ public class Admin extends javax.swing.JFrame {
             }
             
             //System.out.println(t);
-            
+            generarRutas(t);
+            JOptionPane.showMessageDialog(null, "Rutas creadas correctamente.","Administradoe",JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {
@@ -328,7 +330,7 @@ public class Admin extends javax.swing.JFrame {
             }
         }
         
-        generarRutas(t);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -352,6 +354,7 @@ public class Admin extends javax.swing.JFrame {
             
             //System.out.println(t);
             generarClientes(t);
+            JOptionPane.showMessageDialog(null, "Clientes agregados correctamente.","Administradoe",JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {
@@ -386,6 +389,7 @@ public class Admin extends javax.swing.JFrame {
             
             //System.out.println(t);
             generarMensajeros(t);
+            JOptionPane.showMessageDialog(null, "Mensajeros agregados correctamente.","Administradoe",JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NullPointerException e) {

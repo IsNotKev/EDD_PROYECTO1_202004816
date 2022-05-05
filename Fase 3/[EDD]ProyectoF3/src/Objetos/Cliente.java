@@ -35,7 +35,11 @@ public class Cliente {
     public void solicitar(){
         solicitudes += 1;
     }
-    
+
+    public int getSolicitudes() {
+        return solicitudes;
+    }
+      
     public long getDpi() {
         return dpi;
     }
