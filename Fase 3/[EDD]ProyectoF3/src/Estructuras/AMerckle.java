@@ -75,10 +75,13 @@ public class AMerckle {
                
         if(newTxList.size()%2 != 0){
             newTxList.add(EDDProyectoF3.convertirSHA256(""));
+        }else if(newTxList.size() == 0){
+            newTxList.add(EDDProyectoF3.convertirSHA256(""));
+            newTxList.add(EDDProyectoF3.convertirSHA256(""));
         }
         ArrayList<ArrayList<String>> nodos = new ArrayList<ArrayList<String>>();
         nodos.add(newTxList);
-        while (newTxList.size() != 1) {            
+        while (newTxList.size() > 1) {            
             newTxList = getNodeHashList(newTxList);    
             nodos.add(newTxList);
         }

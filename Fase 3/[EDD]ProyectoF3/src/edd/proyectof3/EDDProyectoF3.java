@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
@@ -32,7 +34,7 @@ public class EDDProyectoF3 {
     
     public static Cliente actual;
     
-    public static Lista blockchein = new Lista();
+    public static BlockChein blockchein = new BlockChein();
     public static AMerckle arbol = new AMerckle();
     
     public static Timer timer = new Timer (180000, new ActionListener ()
@@ -40,8 +42,10 @@ public class EDDProyectoF3 {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("Generando Bloque ...");
-             }
+                blockchein.crearBloque();
+            }
         });
+    public static int cantCeros = 4;
     
     public static void main(String[] args) {
         timer.start();
@@ -58,8 +62,7 @@ public class EDDProyectoF3 {
         /*Usuario us = new Usuario();
         us.setVisible(true);*/
 
-        arbol.agregar("Hola");
-        arbol.agregar("Hola2");
+        /*arbol.agregar("Hola2");
         arbol.agregar("Hola3");
         arbol.agregar("Hola4");
         arbol.agregar("Hola5");
@@ -68,11 +71,10 @@ public class EDDProyectoF3 {
         arbol.agregar("Hola8");
         arbol.agregar("Hola9");
         arbol.generarArbol();
-        System.out.println(arbol.getMerkleRoot());
-         
-        /*timer.stop();
-        timer.setDelay(tiempo);
-        timer.start();*/
+        System.out.println(arbol.getMerkleRoot());*/   
+        /*blockchein.crearBloque();
+        blockchein.crearBloque();
+        blockchein.imprimir();*/
         
     }
     
