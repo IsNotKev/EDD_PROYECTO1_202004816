@@ -1,9 +1,0 @@
-{
-  "index": 1,
-  "timestamp": "05-05-22::12:51:45",
-  "nonce": 29084,
-  "entregas": [],
-  "previusHash": "0000e77c4aaca9d3dbb5198449403574d375fb253f5e5d840d32a62467e3e584",
-  "rootMerkle": "3b7546ed79e3e5a7907381b093c5a182cbf364c5dd0443dfa956c8cca271cc33",
-  "hash": "00004635bfd4bec887e263fe78a148bd1ef9514218bd796e6185c4f82c48f380"
-}

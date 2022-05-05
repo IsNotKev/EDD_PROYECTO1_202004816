@@ -7,7 +7,6 @@ package edd.proyectof3;
 
 import Estructuras.*;
 import Objetos.*;
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -15,8 +14,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
