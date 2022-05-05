@@ -73,8 +73,8 @@ public class EDDProyectoF3 {
         arbol.generarArbol();
         System.out.println(arbol.getMerkleRoot());*/   
         /*blockchein.crearBloque();
-        blockchein.crearBloque();
-        blockchein.imprimir();*/
+        blockchein.crearBloque();*/
+        //blockchein.imprimir();
         
     }
     

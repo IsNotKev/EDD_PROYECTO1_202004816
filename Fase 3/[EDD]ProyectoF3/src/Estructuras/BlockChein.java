@@ -5,7 +5,11 @@
  */
 package Estructuras;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edd.proyectof3.EDDProyectoF3;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -130,6 +134,37 @@ public class BlockChein {
         Bloque n = new Bloque(index,hora,previusH,nonce,rooth,hash);
         agregar(n);
         EDDProyectoF3.arbol = new AMerckle();
+        
+        generarJson(n);
         index++;
+    }
+    
+    public void generarJson(Bloque n){
+        
+        
+        Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(prettyGson.toJson(n));
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            String ruta = System.getProperty("user.dir") + "\\Bloques\\"+n.index+".json";
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+
+            pw.println(prettyGson.toJson(n));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
     }
 }
