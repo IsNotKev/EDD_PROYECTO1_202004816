@@ -7,6 +7,7 @@ package edd.proyectof3;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,7 +61,7 @@ public class Usuario extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Generar Entrega");
+        jButton1.setText("Solicitar Entrega");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -154,6 +155,18 @@ public class Usuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println(dtf.format(LocalDateTime.now()));
+        if(jComboBox1.getSelectedItem() == null || jComboBox2.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(null, "No Suficientes Datos.","Cliente",JOptionPane.ERROR_MESSAGE);
+        }else{
+            
+            String sucursal = jComboBox1.getSelectedItem()+"";
+            String mensajero = jComboBox2.getSelectedItem()+"";
+            
+            String solicitud = sucursal+" , "+dtf.format(LocalDateTime.now())+" , "+EDDProyectoF3.actual.getId_municipio() + " , " + EDDProyectoF3.actual.getDpi();
+            solicitud += " , " + mensajero + " , ruta";
+            
+            EDDProyectoF3.arbol.agregar(solicitud);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

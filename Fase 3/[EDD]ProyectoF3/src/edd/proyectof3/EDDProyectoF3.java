@@ -39,7 +39,7 @@ public class EDDProyectoF3 {
         {
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("Hola :v");
+                System.out.println("Generando Bloque ...");
              }
         });
     
