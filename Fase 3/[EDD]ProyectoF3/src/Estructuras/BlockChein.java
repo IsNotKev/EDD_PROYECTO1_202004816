@@ -9,6 +9,8 @@ import Objetos.Entregas;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edd.proyectof3.EDDProyectoF3;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -176,6 +178,36 @@ public class BlockChein {
            } catch (Exception e2) {
               e2.printStackTrace();
            }
+        }
+    }
+    
+    public void graficar(){
+        String resultado="digraph G{\nlabel=\"BlockChain\";\nrankdir=\"LR\";\n";  
+        
+        Nodo aux = genesis;
+        String anterior = "";
+        while(aux!=null){
+            resultado += "L"+aux.info.index+"[shape=record, label=\"{<I"+aux.info.index+">INDEX: "+ aux.info.index +"\\n HASH: "+aux.info.hash+"}|{<N"+aux.info.index+">PREVIOUS HASH: "+aux.info.previusHash+"}|{MERKLE ROOT: "+aux.info.rootMerkle+"}\"];\n";
+            if(!anterior.equals("")){
+                resultado += anterior + "->L"+aux.info.index+":N" + aux.info.index + ";\n";
+            }           
+            anterior = "L"+aux.info.index+":" +"I"+aux.info.index;
+            aux = aux.next;
+        }
+        
+        resultado += "\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\blockchain.txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            EDDProyectoF3.graficarDot("blockchain");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

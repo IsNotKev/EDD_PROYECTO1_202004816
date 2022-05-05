@@ -179,7 +179,7 @@ public class Usuario extends javax.swing.JFrame {
             for (Mensajero mm : EDDProyectoF3.mensajeros) {
                 if(mm!=null){
                    if(mm.getDpi()==dpim){
-                        men = mm.getNombre() + mm.getApellido();
+                        men = mm.getNombre()+ " " + mm.getApellido();
                         mm.entregar();
                     } 
                 }          
