@@ -8,12 +8,15 @@ package edd.proyectof3;
 import Estructuras.*;
 import Objetos.*;
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 /**
  *
@@ -28,6 +31,8 @@ public class EDDProyectoF3 {
     public static ArrayList<Mensajero> mensajeros = new ArrayList<Mensajero>();
     
     public static Cliente actual;
+    
+    public static Lista blockchein = new Lista();
     
     public static void main(String[] args) {
         
@@ -53,6 +58,15 @@ public class EDDProyectoF3 {
         
         /*Usuario us = new Usuario();
         us.setVisible(true);*/
+        
+        Timer timer = new Timer (180000, new ActionListener ()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("Hola :v");
+             }
+        });
+        timer.start();
     }
     
     public static void agregarMensajero(Mensajero nuevo){
@@ -139,7 +153,7 @@ public class EDDProyectoF3 {
         for (int i = 0; i < mensajeros.size(); i++) {
             Mensajero a = mensajeros.get(i);
             if(a!=null){
-                resultado += a.getDpi() + "|";
+                resultado += "DPI:"+a.getDpi()+"\\nNOMBRE: " + a.getNombre() + "\\nAPELLIDO: "+ a.getApellido() + "|";
             }else{
                 resultado += "-"+i + "-|";
             }         

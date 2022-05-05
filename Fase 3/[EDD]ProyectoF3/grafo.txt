@@ -1,0 +1,9 @@
+digraph G{
+label="Lista De Adyacencia";
+N17->N13[label="5",dir=none];
+N17->N16[label="3",dir=none];
+N14->N13[label="3",dir=none];
+N14->N16[label="1",dir=none];
+N8->N13[label="5",dir=none];
+
+}

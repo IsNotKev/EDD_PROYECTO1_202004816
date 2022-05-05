@@ -6,6 +6,7 @@
 package edd.proyectof3;
 
 import Objetos.Cliente;
+import Objetos.Mensajero;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import javax.swing.JOptionPane;
 
@@ -189,13 +190,23 @@ public class LogIn extends javax.swing.JFrame {
                         
                         for(int j= 0; j<EDDProyectoF3.lugares.size();j++){
                             if((EDDProyectoF3.lugares.get(j)).getSn_sucursal().equals("si")){
-                                nusuario.jComboBox1.addItem((EDDProyectoF3.lugares.get(j)).getNombre());
+                                String ll = (EDDProyectoF3.lugares.get(j)).getId() + ". "+(EDDProyectoF3.lugares.get(j)).getNombre();
+                                nusuario.jComboBox1.addItem(ll);
                             }
+                        }
+                        
+                        for(int j= 0; j<EDDProyectoF3.mensajeros.size();j++){
+                            Mensajero nn = EDDProyectoF3.mensajeros.get(j);
+                            if(nn!=null){
+                                String ll = nn.getNombre()+ " - "+nn.getDpi();
+                                nusuario.jComboBox2.addItem(ll); 
+                            }                         
                         }
                                               
                         encontrado = true;                      
                         dispose();
                         JOptionPane.showMessageDialog(null, "Bienvenid@ " + n.getNombre(),"Usuario",JOptionPane.INFORMATION_MESSAGE);
+                        EDDProyectoF3.actual = n;
                     }
                     break;
                 }
