@@ -33,22 +33,21 @@ public class EDDProyectoF3 {
     public static Cliente actual;
     
     public static Lista blockchein = new Lista();
+    public static AMerckle arbol = new AMerckle();
+    
+    public static Timer timer = new Timer (180000, new ActionListener ()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("Hola :v");
+             }
+        });
     
     public static void main(String[] args) {
-        
+        timer.start();
         for(int i=0; i<37;i++){
             mensajeros.add(null);
-        }
-        
-        /*String password = "1234";
-        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
-        // $2a$12$US00g/uMhoSBm.HiuieBjeMtoN69SN.GE25fCpldebzkryUyopws6
-
-        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
-        // result.verified == true
-        
-        System.out.println(bcryptHashString);
-        System.out.println(result);*/
+        }        
         
         LogIn l = new LogIn();
         l.setVisible(true);
@@ -58,15 +57,23 @@ public class EDDProyectoF3 {
         
         /*Usuario us = new Usuario();
         us.setVisible(true);*/
+
+        arbol.agregar("Hola");
+        arbol.agregar("Hola2");
+        arbol.agregar("Hola3");
+        arbol.agregar("Hola4");
+        arbol.agregar("Hola5");
+        arbol.agregar("Hola6");
+        arbol.agregar("Hola7");
+        arbol.agregar("Hola8");
+        arbol.agregar("Hola9");
+        arbol.generarArbol();
+        System.out.println(arbol.getMerkleRoot());
+         
+        /*timer.stop();
+        timer.setDelay(tiempo);
+        timer.start();*/
         
-        Timer timer = new Timer (180000, new ActionListener ()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                System.out.println("Hola :v");
-             }
-        });
-        timer.start();
     }
     
     public static void agregarMensajero(Mensajero nuevo){

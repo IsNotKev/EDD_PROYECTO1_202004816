@@ -19,6 +19,7 @@ public class Cliente {
     String telefono;
     String direccion;
     int id_municipio;
+    int solicitudes = 0;
 
     public Cliente(long dpi, String nombre, String usuario, String correo, String contra, String telefono, String direccion, int id_municipio) {
         this.dpi = dpi;
@@ -29,6 +30,10 @@ public class Cliente {
         this.telefono = telefono;
         this.direccion = direccion;
         this.id_municipio = id_municipio;
+    }
+    
+    public void solicitar(){
+        solicitudes += 1;
     }
     
     public long getDpi() {

@@ -17,6 +17,7 @@ public class Mensajero {
     String genero;
     String telefono;
     String direccion;
+    int entregas = 0;
 
     public Mensajero(long dpi, String nombre, String apellido, String tipo_licencia, String genero, String telefono, String direccion) {
         this.dpi = dpi;
@@ -28,6 +29,10 @@ public class Mensajero {
         this.direccion = direccion;
     }
 
+    public void entregar(){
+        entregas += 1;
+    }
+    
     public long getDpi() {
         return dpi;
     }
