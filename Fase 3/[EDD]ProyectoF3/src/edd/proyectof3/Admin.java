@@ -532,13 +532,13 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
-            String t = JOptionPane.showInputDialog("Escriba el tiempo en milisegundos");
+            String t = JOptionPane.showInputDialog("Escriba el tiempo en minutos");
             int ntiempo = Integer.parseInt(t);
             //System.out.println(ntiempo);
             EDDProyectoF3.timer.stop();
-            EDDProyectoF3.timer.setDelay(ntiempo);
+            EDDProyectoF3.timer.setDelay(ntiempo*60000);
             EDDProyectoF3.timer.start();
-            JOptionPane.showMessageDialog(null, "El tiempo de creación de bloques actualizado a " + ntiempo + " milisegundos.","Administrador",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El tiempo de creación de bloques actualizado a " + ntiempo + " minutos.","Administrador",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ingrese Un Dato Correcto.","Administrador",JOptionPane.ERROR_MESSAGE);
         }
