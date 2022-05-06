@@ -68,7 +68,7 @@ public class Lista {
     }
     
     public void graficarGrafo(){
-        String resultado="digraph G{\nlabel=\"Lista De Adyacencia\";\n";        
+        String resultado="digraph G{\nlabel=\"Grafo de Rutas\";\n";        
 
         Nodo aux = raiz;    
         while(aux!=null){

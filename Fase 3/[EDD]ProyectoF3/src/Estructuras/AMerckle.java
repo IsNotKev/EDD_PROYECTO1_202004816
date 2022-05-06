@@ -6,6 +6,9 @@
 package Estructuras;
 
 import edd.proyectof3.EDDProyectoF3;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
@@ -87,7 +90,7 @@ public class AMerckle {
         }
         
         this.merkleRoot = newTxList.get(0);
-        //graficarArbolM(nodos);
+        graficarArbolM(nodos);
         /*for(int i = 0 ; i<nodos.size() ; i++){
             System.out.println(nodos.get(i).size());
         }*/
@@ -95,33 +98,43 @@ public class AMerckle {
         //System.out.println(nodos);
     }
 
-    public void graficarArbolM( ArrayList<ArrayList<String>> nodos){
+    public void graficarArbolM( ArrayList<ArrayList<String>> nodos){      
+        String resultado="digraph G{\nlabel=\"Arbol Merkle\";\n"; 
         int tamano = nodos.size();
-        raiz = new Nodo(nodos.get(tamano-1).get(0));
-        
-        int index = 1;
         int contador = 0;
-        
-        while(index<tamano){                        
-            ArrayList<String> padres = nodos.get(tamano-index);
-            ArrayList<String> hijos = nodos.get(tamano-index-1);
-            
-            for(String cadena :padres) {
-                int i = 0;
-                System.out.println("N"+contador+"[label=\""+cadena+"\"]");
-                String ant = "N"+contador;
+        for (int i = tamano-1; i >= 0; i--) {
+            int n = nodos.get(i).size();
+            for (int j = 0; j < n; j++) {
+                resultado += "N"+contador+"[label=\""+nodos.get(i).get(j)+"\"];\n";
                 contador++;
-                while(i<hijos.size()){
-                    System.out.println("N"+contador+"[label=\""+hijos.get(i)+"\"]");
-                    System.out.println(ant+"->N"+contador +";");
-                    i++;
-                    System.out.println(cadena+"->"+hijos.get(i)+";");
-                    i++;
-                }
             }
-            
-            index++;
         }
+        
+        int niv = 0;
+        
+        while(niv<tamano){
+            int t = nodos.get(niv).size();
+            for (int i = 0; i < t; i++) {
+                
+            }
+            niv++;
+        }
+        
+        resultado += "\n}";
+        
+        try {
+            String ruta = System.getProperty("user.dir") + "\\merkle.txt";
+            File file = new File(ruta);
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(resultado);
+            bw.close(); 
+            EDDProyectoF3.graficarDot("merkle");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
     
     public String getMerkleRoot() {

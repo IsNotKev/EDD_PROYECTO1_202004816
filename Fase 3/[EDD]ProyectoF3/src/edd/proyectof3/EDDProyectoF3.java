@@ -7,11 +7,13 @@ package edd.proyectof3;
 
 import Estructuras.*;
 import Objetos.*;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -46,7 +48,7 @@ public class EDDProyectoF3 {
         });
     public static int cantCeros = 4;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         timer.start();
         for(int i=0; i<37;i++){
             mensajeros.add(null);
@@ -69,14 +71,14 @@ public class EDDProyectoF3 {
         arbol.agregar("Hola7");
         arbol.agregar("Hola8");
         arbol.agregar("Hola9");
-        arbol.generarArbol();
-        System.out.println(arbol.getMerkleRoot());*/ 
+        arbol.generarArbol();*/
+        //System.out.println(arbol.getMerkleRoot());
         /*entregas.add(new Entregas("sede1","mi casa","hoy","yo","juanito"));
         blockchein.crearBloque();
         blockchein.crearBloque();
         blockchein.crearBloque();*/
         //blockchein.imprimir();
-        
+             
     }
     
     public static void agregarMensajero(Mensajero nuevo){

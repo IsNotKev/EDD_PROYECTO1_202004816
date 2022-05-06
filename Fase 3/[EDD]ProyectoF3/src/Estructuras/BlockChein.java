@@ -187,7 +187,7 @@ public class BlockChein {
         Nodo aux = genesis;
         String anterior = "";
         while(aux!=null){
-            resultado += "L"+aux.info.index+"[shape=record, label=\"{<I"+aux.info.index+">INDEX: "+ aux.info.index +"\\n HASH: "+aux.info.hash+"}|{<N"+aux.info.index+">PREVIOUS HASH: "+aux.info.previusHash+"}|{MERKLE ROOT: "+aux.info.rootMerkle+"}\"];\n";
+            resultado += "L"+aux.info.index+"[shape=record, label=\"{<I"+aux.info.index+">INDEX: "+ aux.info.index +"\\n HASH: "+aux.info.hash+"\\n TIMESTAMP: "+aux.info.timestamp+"\\n NONCE: "+ aux.info.nonce +"}|{<N"+aux.info.index+">PREVIOUS HASH: "+aux.info.previusHash+"}|{MERKLE ROOT: "+aux.info.rootMerkle+"}\"];\n";
             if(!anterior.equals("")){
                 resultado += anterior + "->L"+aux.info.index+":N" + aux.info.index + ";\n";
             }           
