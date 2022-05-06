@@ -109,15 +109,37 @@ public class AMerckle {
                 contador++;
             }
         }
+        //System.out.println(contador);
+        /*int c = 0;
         
-        int niv = 0;
-        
-        while(niv<tamano){
-            int t = nodos.get(niv).size();
-            for (int i = 0; i < t; i++) {
-                
-            }
-            niv++;
+        for (int i = 0; i < tamano-1; i++) {
+            ArrayList<String> actual = nodos.get(i);
+            ArrayList<String> siguientes = nodos.get(i+1);
+            int cont = 0;
+            for(String a:actual){
+                int csig = siguientes.size(); 
+                if(c+cont<contador){
+                    cont++;
+                    resultado += "N"+c+"->N"+(c+cont)+";\n";
+                    cont++;
+                    resultado += "N"+c+"->N"+(c+cont)+";\n";
+                }
+                c++;
+            }           
+        }*/
+        int act = 0;
+        for (int i = tamano-2; i >=0; i--) {
+            ArrayList<String> actual = nodos.get(i+1);
+            ArrayList<String> siguientes = nodos.get(i);
+            int c = actual.size();
+            int s = siguientes.size();
+            for(String a:actual){ 
+                resultado += "N"+act+"->N"+(c+act)+";\n";  
+                c++;
+                resultado += "N"+act+"->N"+(c+act)+";\n";
+                act++;               
+            }   
+            
         }
         
         resultado += "\n}";

@@ -62,7 +62,8 @@ public class EDDProyectoF3 {
         /*Usuario us = new Usuario();
         us.setVisible(true);*/
 
-        /*arbol.agregar("Hola2");
+        /*arbol.agregar("Hola1");
+        arbol.agregar("Hola2");
         arbol.agregar("Hola3");
         arbol.agregar("Hola4");
         arbol.agregar("Hola5");
@@ -70,7 +71,8 @@ public class EDDProyectoF3 {
         arbol.agregar("Hola7");
         arbol.agregar("Hola8");
         arbol.agregar("Hola9");
-        arbol.generarArbol();*/
+        arbol.agregar("Hola10");*/
+        //arbol.generarArbol();
         //System.out.println(arbol.getMerkleRoot());
         /*entregas.add(new Entregas("sede1","mi casa","hoy","yo","juanito"));
         blockchein.crearBloque();
